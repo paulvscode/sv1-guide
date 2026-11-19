@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guide d'utilisation simplifié — Korg SV-1</title>
+<meta name="description" content="Guide en français, pas à pas et sans jargon, pour bien utiliser le piano de scène Korg SV-1 Stage Vintage.">
+<meta name="theme-color" content="#1c1917">
+<style>
+  :root{
+    --bg:#faf7f2; --paper:#ffffff; --ink:#1c1917; --muted:#57534e; --line:#e7e1d8;
+    --accent:#b91c1c; --accent-soft:#fdecec; --tip:#ecfdf3; --tip-line:#16a34a;
+    --warn:#fff7e6; --warn-line:#d97706; --code:#f3efe8;
+    --radius:14px; --maxw:860px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#141210; --paper:#1d1a17; --ink:#f5f1ea; --muted:#b8b0a5; --line:#34302b;
+      --accent:#f87171; --accent-soft:#3a1d1d; --tip:#132a1d; --tip-line:#4ade80;
+      --warn:#33270f; --warn-line:#fbbf24; --code:#2a2622;
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+  body{margin:0; background:var(--bg); color:var(--ink);
+    font:17px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+  a{color:var(--accent)}
+  h1,h2,h3{line-height:1.25}
+  h2{font-size:1.5rem; margin:0 0 .6rem; padding-top:.2rem}
+  h3{font-size:1.15rem; margin:1.6rem 0 .4rem}
+  section{scroll-margin-top:70px}
+  [id]{scroll-margin-top:70px}
+
+  /* Barre du haut */
+  .topbar{position:sticky; top:0; z-index:20; background:var(--ink); color:var(--bg);
+    display:flex; align-items:center; justify-content:space-between; gap:.5rem;
+    padding:.55rem 1rem; padding-top:max(.55rem, env(safe-area-inset-top))}
+  .topbar a{color:inherit; text-decoration:none; font-weight:700; letter-spacing:.02em}
+  .topbar .brand span{color:#f87171}
+  .menu-btn{background:transparent; color:inherit; border:1px solid rgba(255,255,255,.35);
+    border-radius:10px; padding:.4rem .75rem; font:inherit; font-size:.95rem; cursor:pointer}
+  .drawer{display:none; position:fixed; inset:52px 0 0 0; z-index:19; background:var(--paper);
+    overflow-y:auto; padding:1rem 1.2rem 3rem; border-top:1px solid var(--line)}
+  .drawer.open{display:block}
+  .drawer ol{margin:0; padding-left:1.4rem}
+  .drawer li{margin:.15rem 0}
+  .drawer a{display:block; padding:.45rem 0; text-decoration:none; color:var(--ink); font-weight:500}
+
+  /* Contenu */
+  main{max-width:var(--maxw); margin:0 auto; padding:0 1rem 4rem}
+  .hero{padding:2.2rem 0 1rem}
+  .hero h1{font-size:clamp(1.8rem,6vw,2.6rem); margin:.2rem 0 .6rem}
+  .kicker{text-transform:uppercase; letter-spacing:.12em; font-size:.8rem; color:var(--accent); font-weight:700}
+  .lead{font-size:1.08rem; color:var(--muted)}
+  .card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+    padding:1.3rem 1.2rem; margin:1.2rem 0}
+  .toc ol{columns:1; padding-left:1.3rem; margin:.4rem 0 0}
+  @media (min-width:640px){ .toc ol{columns:2; column-gap:2.5rem} }
+  .toc li{break-inside:avoid; padding:.15rem 0}
+  .toc a{text-decoration:none; color:var(--ink); border-bottom:1px solid var(--line)}
+  .toc a:hover{color:var(--accent)}
+
+  .box{border-left:4px solid; border-radius:10px; padding:.8rem 1rem; margin:1rem 0}
+  .box p{margin:.2rem 0}
+  .tip{background:var(--tip); border-color:var(--tip-line)}
+  .warn{background:var(--warn); border-color:var(--warn-line)}
+  .box strong:first-child{display:block; margin-bottom:.15rem}
+
+  ol.steps{counter-reset:s; list-style:none; padding:0; margin:.8rem 0}
+  ol.steps>li{counter-increment:s; position:relative; padding:.1rem 0 .7rem 2.6rem}
+  ol.steps>li::before{content:counter(s); position:absolute; left:0; top:.05rem; width:1.85rem; height:1.85rem;
+    border-radius:50%; background:var(--accent); color:#fff; font-weight:700; font-size:.95rem;
+    display:flex; align-items:center; justify-content:center}
+
+  .btn{display:inline-block; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.85em;
+    background:var(--code); border:1px solid var(--line); border-bottom-width:2px; border-radius:6px;
+    padding:.05rem .4rem; white-space:nowrap; font-weight:600}
+
+  .table-wrap{overflow-x:auto; -webkit-overflow-scrolling:touch; margin:.8rem 0;
+    border:1px solid var(--line); border-radius:10px}
+  table{border-collapse:collapse; width:100%; font-size:.95rem; background:var(--paper)}
+  th,td{text-align:left; padding:.55rem .7rem; border-bottom:1px solid var(--line); vertical-align:top}
+  th{background:var(--code); font-weight:700}
+  tr:last-child td{border-bottom:0}
+  table.narrow{min-width:0}
+
+  .back{display:inline-block; margin-top:1rem; font-size:.9rem; text-decoration:none}
+  .grid{display:grid; gap:.8rem; grid-template-columns:1fr}
+  @media (min-width:640px){ .grid{grid-template-columns:1fr 1fr} }
+  .mini{background:var(--bg); border:1px solid var(--line); border-radius:10px; padding:.8rem .9rem}
+  .mini h4{margin:0 0 .3rem; font-size:1rem}
+  .mini p{margin:0; font-size:.95rem; color:var(--muted)}
+
+  /* Schéma façade */
+  .panel{display:flex; flex-wrap:wrap; gap:.4rem; margin:.8rem 0}
+  .panel a{flex:1 1 140px; text-decoration:none; color:var(--ink); background:var(--bg);
+    border:1px solid var(--line); border-radius:10px; padding:.55rem .7rem; font-size:.9rem}
+  .panel a b{display:block; color:var(--accent); font-size:.75rem; letter-spacing:.06em}
+  .chain{display:flex; flex-wrap:wrap; align-items:center; gap:.35rem; font-size:.9rem; margin:.6rem 0}
+  .chain span{background:var(--accent-soft); border-radius:8px; padding:.25rem .55rem; font-weight:600}
+  .chain i{color:var(--muted); font-style:normal}
+
+  footer{max-width:var(--maxw); margin:0 auto; padding:1rem 1rem 3rem; color:var(--muted); font-size:.85rem}
+  @media print{ .topbar,.drawer,.back{display:none} body{background:#fff} .card{border:0; padding:0} }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#top">KORG <span>SV-1</span> · Guide</a>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="drawer">☰ Sommaire</button>
+</header>
+
+<nav class="drawer" id="drawer" aria-label="Sommaire">
+  <ol>
+    <li><a href="#bienvenue">Bienvenue</a></li>
+    <li><a href="#installation">Installer le clavier</a></li>
+    <li><a href="#branchements">Les branchements</a></li>
+    <li><a href="#allumer">Allumer et éteindre</a></li>
+    <li><a href="#facade">Découvrir la façade</a></li>
+    <li><a href="#sons">Choisir un son</a></li>
+    <li><a href="#liste-sons">La liste des 36 sons</a></li>
+    <li><a href="#effets">Les effets</a></li>
+    <li><a href="#favoris">Les favoris (mémoires)</a></li>
+    <li><a href="#transposer">Transposer</a></li>
+    <li><a href="#toucher">Régler le toucher</a></li>
+    <li><a href="#accorder">Accorder le clavier</a></li>
+    <li><a href="#pedales">Les pédales</a></li>
+    <li><a href="#demo">Écouter les démos</a></li>
+    <li><a href="#ordinateur">Avec un ordinateur</a></li>
+    <li><a href="#recettes">Recettes de sons</a></li>
+    <li><a href="#depannage">Dépannage</a></li>
+    <li><a href="#entretien">Entretien et lampe</a></li>
+    <li><a href="#reinitialiser">Réinitialisation usine</a></li>
+    <li><a href="#glossaire">Petit glossaire</a></li>
+    <li><a href="#memo">Aide-mémoire</a></li>
+  </ol>
+</nav>
+
+<main id="top">
+
+  <div class="hero">
+    <div class="kicker">Guide d'utilisation simplifié</div>
+    <h1>Korg SV-1 Stage Vintage Piano</h1>
+    <p class="lead">Tout ce qu'il faut savoir pour jouer, régler et garder vos sons préférés, expliqué simplement, sans jargon technique. Valable pour les modèles 73 et 88 touches.</p>
+  </div>
+
+  <div class="card toc">
+    <strong>Sommaire</strong>
+    <ol>
+      <li><a href="#bienvenue">Bienvenue</a></li>
+      <li><a href="#installation">Installer le clavier</a></li>
+      <li><a href="#branchements">Les branchements</a></li>
+      <li><a href="#allumer">Allumer et éteindre</a></li>
+      <li><a href="#facade">Découvrir la façade</a></li>
+      <li><a href="#sons">Choisir un son</a></li>
+      <li><a href="#liste-sons">La liste des 36 sons</a></li>
+      <li><a href="#effets">Les effets</a></li>
+      <li><a href="#favoris">Les favoris (mémoires)</a></li>
+      <li><a href="#transposer">Transposer</a></li>
+      <li><a href="#toucher">Régler le toucher</a></li>
+      <li><a href="#accorder">Accorder le clavier</a></li>
+      <li><a href="#pedales">Les pédales</a></li>
+      <li><a href="#demo">Écouter les démos</a></li>
+      <li><a href="#ordinateur">Avec un ordinateur</a></li>
+      <li><a href="#recettes">Recettes de sons</a></li>
+      <li><a href="#depannage">Dépannage</a></li>
+      <li><a href="#entretien">Entretien et lampe</a></li>
+      <li><a href="#reinitialiser">Réinitialisation usine</a></li>
+      <li><a href="#glossaire">Petit glossaire</a></li>
+      <li><a href="#memo">Aide-mémoire</a></li>
+    </ol>
+  </div>
+
+  <!-- 1 -->
+  <section id="bienvenue" class="card">
+    <h2>1. Bienvenue</h2>
+    <p>Le SV-1 est un <strong>piano de scène « vintage »</strong>. Il reproduit les claviers célèbres des années 60 à 80 : pianos électriques, pianos à queue, orgues, clavinets, cordes… Sa particularité : <strong>tout se règle avec des boutons visibles sur la façade</strong>, sans écran ni menu compliqué.</p>
+    <div class="grid">
+      <div class="mini"><h4>36 sons</h4><p>6 familles × 6 variantes, choisies avec deux gros boutons rotatifs.</p></div>
+      <div class="mini"><h4>8 favoris</h4><p>Huit touches pour garder vos réglages préférés et les rappeler d'un geste.</p></div>
+      <div class="mini"><h4>Des effets « comme avant »</h4><p>Pédales d'effet, amplis, chorus, réverbération… comme sur une vraie scène.</p></div>
+      <div class="mini"><h4>Une vraie lampe</h4><p>Une lampe (tube 12AX7) est montée à l'avant : elle donne de la chaleur au son.</p></div>
+    </div>
+    <div class="box tip"><strong>💡 À retenir</strong><p>Vous ne pouvez rien « casser » en tournant les boutons. Pour revenir au réglage d'origine d'un bouton, il suffit d'<strong>appuyer dessus</strong> (les boutons rotatifs sont aussi des boutons-poussoirs).</p></div>
+    <a class="back" href="#top">↑ Retour au sommaire</a>
+  </section>
+
+  <!-- 2 -->
+  <section id="installation" class="card">
+    <h2>2. Installer le clavier</h2>
+    <h3>Ce qu'il y a dans la boîte</h3>
+    <ul>
+      <li>Le clavier SV-1</li>
+      <li>Le câble d'alimentation</li>
+      <li>Le pupitre (pour poser vos partitions)</li>
+      <li>La pédale de sustain Korg DS-2H</li>
+      <li>Le mode d'emploi et un disque d'accessoires (logiciel SV-1 Editor)</li>
+    </ul>
+    <h3>Où le poser</h3>
+    <p>Le SV-1 pèse environ <strong>17,5 kg</strong> (73 touches) ou <strong>20,5 kg</strong> (88 touches) : prévoyez un support solide ou une table stable, et soyez deux pour le porter.</p>
+    <div class="box warn"><strong>⚠️ Évitez</strong><p>Le plein soleil, les endroits très chauds, très humides ou poussiéreux, et la proximité d'un radiateur.</p></div>
+    <h3>Monter le pupitre</h3>
+    <p>Glissez les deux pieds du pupitre dans les deux encoches situées à l'arrière du clavier.</p>
+    <a class="back" href="#top">↑ Retour au sommaire</a>
+  </section>
+
+  <!-- 3 -->
+  <section id="branchements" class="card">
+    <h2>3. Les branchements</h2>
+    <div class="box warn"><strong>⚠️ Avant de brancher quoi que ce soit</strong><p>Éteignez le SV-1 <em>et</em> l'appareil que vous voulez brancher (enceinte, ampli, table de mixage). Baissez le volume.</p></div>
+
+    <h3>L'alimentation</h3>
+    <p>Branchez le câble fourni dans la prise <span class="btn">POWER</span> à l'arrière, puis dans une prise murale. Pas besoin de transformateur : le SV-1 accepte toutes les tensions (100 à 240 V).</p>
+
+    <h3>Un casque</h3>
+    <p>La prise casque se trouve <strong>sous le clavier, à gauche</strong>. Branchez-y un casque avec une grosse fiche (jack 6,35 mm) ou un adaptateur. Pour brancher deux casques, il faut un petit « répartiteur » ou un amplificateur de casque.</p>
+
+    <h3>Des enceintes ou un ampli</h3>
+    <p>À l'arrière, vous avez deux types de sorties :</p>
+    <div class="table-wrap"><table>
+      <tr><th>Sortie</th><th>Pour quoi faire</th></tr>
+      <tr><td><span class="btn">OUTPUT L/MONO</span> et <span class="btn">R</span> (jack)</td><td>Enceintes de maison, ampli clavier. Avec <strong>un seul câble</strong>, utilisez uniquement <em>L/MONO</em>. Avec deux câbles (stéréo), le son est meilleur.</td></tr>
+      <tr><td><span class="btn">XLR L</span> et <span class="btn">R</span></td><td>Table de mixage sur scène ou en studio (câbles micro). <strong>Branchez toujours les deux</strong> : ces prises ne fonctionnent pas en mono.</td></tr>
+    </table></div>
+
+    <h3>Les pédales</h3>
+    <p>Trois prises pédale à l'arrière : <span class="btn">DAMPER</span> (la pédale de sustain fournie), <span class="btn">PEDAL 1</span> et <span class="btn">PEDAL 2</span>. Tout est expliqué dans la section <a href="#pedales">Les pédales</a>.</p>
+
+    <h3>Un ordinateur ou un autre clavier</h3>
+    <p>La prise <span class="btn">USB</span> permet de relier le SV-1 à un ordinateur ; les prises <span class="btn">MIDI IN/OUT</span> à d'autres instruments. Voir <a href="#ordinateur">Avec un ordinateur</a>.</p>
+
+    <h3>Une entrée audio</h3>
+    <p>Les prises <span class="btn">INPUT</span> permettent de brancher une autre source sonore (lecteur, autre clavier) pour l'entendre en même temps que le SV-1, dans les mêmes enceintes ou le même casque.</p>
+    <a class="back" href="#top">↑ Retour au sommaire</a>
+  </section>
+
+  <!-- 4 -->
+  <section id="allumer" class="card">
+    <h2>4. Allumer et éteindre</h2>
+    <ol class="steps">
+      <li>Tournez le bouton <span class="btn">MASTER VOLUME</span> au minimum.</li>
+      <li>Appuyez sur l'interrupteur <span class="btn">POWER</span>.</li>
+      <li>Patientez quelques secondes : la lampe doit chauffer, un peu comme une ancienne radio.</li>
+      <li>Allumez ensuite vos enceintes ou votre ampli.</li>
+      <li>Jouez quelques notes en montant doucement le volume.</li>
+    </ol>
+    <p>Pour éteindre, faites l'inverse : <strong>d'abord les enceintes</strong>, ensuite le SV-1.</p>
+    <div class="box tip"><strong>💡 Normal, pas d'inquiétude</strong><p>Un petit éclair dans la lampe ou un léger bruit à l'allumage est normal : la lampe est encore froide. Cela n'abîme rien.</p></div>
+    <div class="box tip"><strong>💡 Économisez la lampe</strong><p>Éteignez le SV-1 quand vous ne jouez pas : vous économisez de l'électricité et la lampe dure plus longtemps.</p></div>
+    <a class="back" href="#top">↑ Retour au sommaire</a>
+  </section>
+
+  <!-- 5 -->
+  <section id="facade" class="card">
+    <h2>5. Découvrir la façade</h2>
+    <p>La façade se lit de gauche à droite, un peu comme le chemin que suit le son. Touchez une zone pour aller à son explication :</p>
+    <div class="panel">
+      <a href="#entretien"><b>VALVE</b>La lampe</a>
+      <a href="#eq"><b>EQUALIZER</b>Graves / médiums / aigus</a>
+      <a href="#sons"><b>SOUND</b>Choix du son</a>
+      <a href="#prefx"><b>PRE FX</b>Pédales d'effet</a>
+      <a href="#ampli"><b>AMP MODEL</b>Simulation d'ampli</a>
+      <a href="#modulation"><b>MODULATION FX</b>Chorus, phaser…</a>
+      <a href="#reverb"><b>REVERB / DELAY</b>Résonance, écho</a>
+      <a href="#favoris"><b>FAVORITES</b>8 mémoires</a>
+      <a href="#transposer"><b>TRANSPOSE · LOCAL OFF · TOUCH · FUNCTION</b>Réglages</a>
+      <a href="#allumer"><b>MASTER VOLUME · POWER</b>Volume et marche/arrêt</a>
+    </div>
+    <h3>Trois gestes à connaître</h3>
+    <ul>
+      <li><strong>Tourner</strong> un bouton : change le réglage. Les petites lumières (LED) autour du bouton montrent où vous en êtes.</li>
+      <li><strong>Appuyer</strong> sur un bouton rotatif : le remet à sa valeur d'origine.</li>
+      <li><strong>Bouton ON/OFF</strong> de chaque section : allume ou éteint l'effet (la lumière est allumée quand l'effet est actif).</li>
+    </ul>
+    <a class="back" href="#top">↑ Retour au sommaire</a>
+  </section>
+
+  <!-- 6 -->
+  <section id="sons" class="card">
+    <h2>6. Choisir un son</h2>
+    <p>Dans la section <span class="btn">SOUND</span>, deux boutons suffisent :</p>
+    <ol class="steps">
+      <li>Tournez <span class="btn">TYPE</span> pour choisir la <strong>famille</strong> : E.Piano 1, E.Piano 2, Clav, Piano, Organ ou Other (cordes, chœurs, cuivres).</li>
+      <li>Tournez <span class="btn">VARIATION</span> (1 à 6) pour choisir <strong>la variante</strong> dans cette famille.</li>
+      <li>Jouez ! Les effets se règlent automatiquement selon le son choisi.</li>
+    </ol>
+    <div class="box warn"><strong>⚠️ Attention aux réglages non sauvegardés</strong><p>Si vous modifiez un son puis en choisissez un autre, vos modifications sont perdues. Pour les garder, enregistrez-les dans un <a href="#favoris">favori</a> avant de changer.</p></div>
+    <a class="back" href="#top">↑ Retour au sommaire</a>
+  </section>
+
+  <!-- 7 -->
+  <section id="liste-sons" class="card">
+    <h2>7. La liste des 36 sons</h2>
+    <p>Les sons sont rangés par famille (bouton <span class="btn">TYPE</span>), puis par numéro de variante (bouton <span class="btn">VARIATION</span>).</p>
+    <h3>TYPE : E.Piano 1 — pianos électriques à lames</h3>
+    <div class="table-wrap"><table>
+      <tr><th>Var.</th><th>Nom</th><th>En deux mots</th></tr>
+      <tr><td>1</td><td>Tine EP/Amp</td><td>Le piano électrique des années 70, joué dans un ampli de guitare. Doux et rond.</td></tr>
+      <tr><td>2</td><td>Tine EP/Phaser</td><td>Le même avec un effet « tourbillon » (phaser), très soul et rock.</td></tr>
+      <tr><td>3</td><td>Tremolo EP</td><td>Piano électrique dont le son va et vient de gauche à droite.</td></tr>
+      <tr><td>4</td><td>Dyno EP</td><td>Version plus brillante et piquante, typique de la fin des années 70.</td></tr>
+      <tr><td>5</td><td>VPM Piano</td><td>Piano électrique numérique des années 80, très « pop ».</td></tr>
+      <tr><td>6</td><td>VPM Tine</td><td>Variante plus tranchante du précédent.</td></tr>
+    </table></div>
+
+    <h3>TYPE : E.Piano 2 — autres pianos électriques</h3>
+    <div class="table-wrap"><table>
+      <tr><th>Var.</th><th>Nom</th><th>En deux mots</th></tr>
+      <tr><td>1</td><td>Reed EP 1</td><td>Piano électrique à anches de la fin des années 50, un peu « grinçant ».</td></tr>
+      <tr><td>2</td><td>Reed EP 2</td><td>Le même avec des effets qui rappellent un son classique.</td></tr>
+      <tr><td>3</td><td>Electric Grand</td><td>Piano de scène des années 70 qui imitait le piano acoustique.</td></tr>
+      <tr><td>4</td><td>SG-1D Piano</td><td>Ancien piano numérique Korg, graves profonds et aigus brillants.</td></tr>
+      <tr><td>5</td><td>80's Synth Piano</td><td>Piano de synthétiseur de la fin des années 80.</td></tr>
+      <tr><td>6</td><td>MIDI Grand</td><td>Mélange piano acoustique + piano électrique, idéal pour les ballades.</td></tr>
+    </table></div>
+
+    <h3>TYPE : Clav — clavinets et pianos électroniques</h3>
+    <div class="table-wrap"><table>
+      <tr><th>Var.</th><th>Nom</th><th>En deux mots</th></tr>
+      <tr><td>1</td><td>Clav AC</td><td>Le clavinet : son percussif et funky, très reconnaissable.</td></tr>
+      <tr><td>2</td><td>Clav BC</td><td>Clavinet plus agressif, esprit funk des années 70.</td></tr>
+      <tr><td>3</td><td>Clav BD</td><td>Autre couleur de clavinet.</td></tr>
+      <tr><td>4</td><td>Clav AD</td><td>Autre couleur de clavinet.</td></tr>
+      <tr><td>5</td><td>ElectroPno</td><td>Piano électromécanique des années 60, au son doux.</td></tr>
+      <tr><td>6</td><td>ElectraPno</td><td>Piano électronique des années 70, très utilisé en rock progressif.</td></tr>
+    </table></div>
+
+    <h3>TYPE : Piano — pianos acoustiques</h3>
+    <div class="table-wrap"><table>
+      <tr><th>Var.</th><th>Nom</th><th>En deux mots</th></tr>
+      <tr><td>1</td><td>Grand Piano 1</td><td>Piano à queue japonais, polyvalent pour la pop et le jazz.</td></tr>
+      <tr><td>2</td><td>Grand Piano 2</td><td>Piano à queue allemand, parfait pour le jazz et le classique.</td></tr>
+      <tr><td>3</td><td>Mono Grand</td><td>Le même en mono, pratique sur un petit ampli.</td></tr>
+      <tr><td>4</td><td>Upright</td><td>Piano droit, son plus intime.</td></tr>
+      <tr><td>5</td><td>Piano/Strings</td><td>Piano + cordes, pour les ballades.</td></tr>
+      <tr><td>6</td><td>Piano/Pad</td><td>Piano + nappe de synthé chaude et sombre.</td></tr>
+    </table></div>
+
+    <h3>TYPE : Organ — orgues</h3>
+    <div class="table-wrap"><table>
+      <tr><th>Var.</th><th>Nom</th><th>En deux mots</th></tr>
+      <tr><td>1</td><td>Click Tonewheel</td><td>Le grand orgue à roues phoniques du rock et du jazz.</td></tr>
+      <tr><td>2</td><td>Jazz Tonewheel</td><td>Le même, réglé pour le jazz et le funk.</td></tr>
+      <tr><td>3</td><td>Full Tonewheel</td><td>Orgue « tous registres ouverts », puissant.</td></tr>
+      <tr><td>4</td><td>Console Organ</td><td>Orgue à lampes américain, très rock.</td></tr>
+      <tr><td>5</td><td>Italian Combo</td><td>Orgue italien de la fin des années 60.</td></tr>
+      <tr><td>6</td><td>Vox Combo</td><td>Orgue VOX Continental des années 60.</td></tr>
+    </table></div>
+
+    <h3>TYPE : Other — cordes, chœurs, cuivres</h3>
+    <div class="table-wrap"><table>
+      <tr><th>Var.</th><th>Nom</th><th>En deux mots</th></tr>
+      <tr><td>1</td><td>Full Strings</td><td>Orchestre à cordes chaleureux.</td></tr>
+      <tr><td>2</td><td>Tape Strings</td><td>Cordes « sur bande », son rétro du rock progressif.</td></tr>
+      <tr><td>3</td><td>70s Strings</td><td>Cordes de synthé typiques des années 70.</td></tr>
+      <tr><td>4</td><td>Choir</td><td>Chœur hommes et femmes.</td></tr>
+      <tr><td>5</td><td>Synth Brass</td><td>Cuivres de synthé chaleureux.</td></tr>
+      <tr><td>6</td><td>Sharp Brass</td><td>Cuivres de synthé brillants, style années 80.</td></tr>
+    </table></div>
+    <a class="back" href="#top">↑ Retour au sommaire</a>
+  </section>
+
+  <!-- 8 -->
+  <section id="effets" class="card">
+    <h2>8. Les effets</h2>
+    <p>Chaque son passe par une série d'effets, dans cet ordre :</p>
+    <div class="chain"><span>Son</span><i>→</i><span>Égaliseur</span><i>→</i><span>Pédale d'effet</span><i>→</i><span>Ampli</span><i>→</i><span>Modulation</span><i>→</i><span>Réverb / Écho</span><i>→</i><span>Sortie</span></div>
+    <p>Chaque section a son bouton <span class="btn">ON/OFF</span>. Quand vous choisissez un son, les effets se mettent automatiquement sur des réglages adaptés — libre à vous de les modifier.</p>
+
+    <h3 id="eq">L'égaliseur (EQUALIZER)</h3>
+    <p>Trois boutons, comme sur une chaîne hi-fi :</p>
+    <ul>
+      <li><span class="btn">BASS</span> : les graves (plus de rondeur ou moins de « boum »).</li>
+      <li><span class="btn">MID</span> : les médiums (le « corps » du son).</li>
+      <li><span class="btn">TREBLE</span> : les aigus (plus de brillance ou plus de douceur).</li>
+    </ul>
+    <div class="box warn"><strong>⚠️ Doucement</strong><p>Des réglages extrêmes peuvent faire monter fortement le volume.</p></div>
+
+    <h3 id="prefx">Les pédales d'effet (PRE FX)</h3>
+    <p>Imitent les petites pédales que les musiciens posent par terre. Choisissez l'effet avec <span class="btn">TYPE</span>, puis réglez <span class="btn">SPEED</span> (vitesse) et <span class="btn">INTENSITY</span> (force).</p>
+    <div class="table-wrap"><table>
+      <tr><th>Effet</th><th>Ce que ça fait</th></tr>
+      <tr><td>Compressor</td><td>Égalise les notes fortes et faibles, son plus régulier.</td></tr>
+      <tr><td>Booster</td><td>Donne plus de « pêche » et de volume. Attention, ça peut être très fort.</td></tr>
+      <tr><td>U-Vibe</td><td>Son qui ondule, façon années 60.</td></tr>
+      <tr><td>Vibrato</td><td>La hauteur de la note oscille légèrement.</td></tr>
+      <tr><td>Tremolo</td><td>Le volume monte et descend en rythme.</td></tr>
+      <tr><td>Vox Wah</td><td>Effet « ouah-ouah ». Le bouton <span class="btn">AUTO/PEDAL</span> choisit : lumière éteinte = automatique selon votre façon de jouer ; lumière allumée = commandé par une pédale d'expression branchée en PEDAL 2.</td></tr>
+    </table></div>
+
+    <h3 id="ampli">La simulation d'ampli (AMP MODEL)</h3>
+    <p>Fait sonner le clavier comme s'il passait dans un vieil ampli (dont un VOX AC30 ou des amplis d'orgue). Choisissez le modèle avec <span class="btn">TYPE</span> et dosez le grain avec <span class="btn">DRIVE</span> : peu = son propre, beaucoup = son saturé, « sale ».</p>
+    <div class="box tip"><strong>💡 Bon à savoir</strong><p>Si le son devient désagréablement distordu, tournez légèrement <span class="btn">DRIVE</span> vers la gauche. Un léger souffle quand l'ampli est allumé est normal : c'est le caractère des vieux amplis à lampes.</p></div>
+
+    <h3 id="modulation">Les effets de modulation (MODULATION FX)</h3>
+    <p>Ajoutent du mouvement au son. <span class="btn">TYPE</span> pour choisir, <span class="btn">SPEED</span> et <span class="btn">INTENSITY</span> pour régler.</p>
+    <ul>
+      <li><strong>Chorus 1 et 2</strong> : épaissit le son, comme plusieurs instruments ensemble.</li>
+      <li><strong>Phaser 1 et 2</strong> : effet tourbillonnant.</li>
+      <li><strong>Flanger</strong> : effet « avion qui passe ».</li>
+      <li><strong>Rotary</strong> : imite le haut-parleur tournant des orgues. Le bouton <span class="btn">SLOW/FAST</span> passe de la rotation lente à rapide — très utilisé pendant un morceau.</li>
+    </ul>
+
+    <h3 id="reverb">Réverbération et écho (REVERB / DELAY)</h3>
+    <p>Donne l'impression de jouer dans une pièce, une salle ou une église. <span class="btn">TYPE</span> pour choisir, <span class="btn">DEPTH</span> pour doser.</p>
+    <ul>
+      <li><strong>Room</strong> : petite pièce. <strong>Plate</strong> : réverbération de studio, brillante. <strong>Hall</strong> : grande salle. <strong>Spring</strong> : réverbération à ressort des vieux amplis.</li>
+      <li><strong>Tape Echo</strong> : écho façon magnétophone vintage.</li>
+      <li><strong>St. Delay</strong> : écho stéréo. Tapez sur le bouton <span class="btn">TAP</span> au rythme du morceau pour caler la vitesse de l'écho.</li>
+    </ul>
+    <a class="back" href="#top">↑ Retour au sommaire</a>
+  </section>
+
+  <!-- 9 -->
+  <section id="favoris" class="card">
+    <h2>9. Les favoris (mémoires)</h2>
+    <p>Les 8 boutons <span class="btn">FAVORITES</span> fonctionnent comme les présélections d'un autoradio : ils gardent <strong>un son avec tous vos réglages d'effets</strong>, le toucher et l'accordage.</p>
+    <h3>Enregistrer un favori</h3>
+    <ol class="steps">
+      <li>Réglez le son et les effets comme vous le souhaitez.</li>
+      <li><strong>Maintenez appuyé</strong> l'un des 8 boutons FAVORITES.</li>
+      <li>Quand sa lumière clignote, <strong>appuyez une nouvelle fois</strong> dessus. C'est enregistré.</li>
+    </ol>
+    <div class="box warn"><strong>⚠️ Attention</strong><p>Enregistrer sur un bouton remplace ce qu'il contenait. Pensez à noter quel favori correspond à quel morceau (un tableau est proposé dans l'<a href="#memo">aide-mémoire</a>).</p></div>
+    <h3>Rappeler un favori</h3>
+    <p>Appuyez simplement (sans maintenir) sur le bouton du favori. Le son et tous ses réglages reviennent instantanément.</p>
+    <a class="back" href="#top">↑ Retour au sommaire</a>
+  </section>
+
+  <!-- 10 -->
+  <section id="transposer" class="card">
+    <h2>10. Transposer (changer de tonalité)</h2>
+    <p>La transposition décale toutes les notes vers le haut ou le bas. Pratique pour accompagner un chanteur ou jouer un morceau difficile avec un doigté plus simple.</p>
+    <ol class="steps">
+      <li>Maintenez <span class="btn">TRANSPOSE</span> environ <strong>3 secondes</strong>, jusqu'à ce que sa lumière clignote.</li>
+      <li>Appuyez sur une touche du clavier autour du <strong>Do central</strong> (noté C4 par Korg) :
+        <ul>
+          <li>les 12 touches <strong>à gauche</strong> du Do central baissent de 12 à 1 demi-ton ;</li>
+          <li>le Do central = pas de transposition ;</li>
+          <li>les 12 touches <strong>à droite</strong> montent de 1 à 12 demi-tons.</li>
+        </ul>
+      </li>
+      <li>La lumière de TRANSPOSE reste allumée tant que le clavier est transposé.</li>
+      <li>Pour annuler, appuyez de nouveau sur <span class="btn">TRANSPOSE</span>.</li>
+    </ol>
+    <div class="box tip"><strong>💡 Exemple</strong><p>Le chanteur trouve le morceau trop haut ? Après l'étape 1, appuyez sur la touche juste à gauche du Do central (le Si) : tout sonne un demi-ton plus bas.</p></div>
+    <p>Si vous n'appuyez sur aucune touche pendant 4 secondes, l'opération est annulée. La transposition s'efface quand on éteint le clavier.</p>
+    <a class="back" href="#top">↑ Retour au sommaire</a>
+  </section>
+
+  <!-- 11 -->
+  <section id="toucher" class="card">
+    <h2>11. Régler le toucher</h2>
+    <p>Le « toucher » décide de la force qu'il faut mettre dans les touches pour jouer fort.</p>
+    <ol class="steps">
+      <li>Appuyez sur <span class="btn">TOUCH</span>. Sa lumière clignote et le bouton FAVORITES du réglage actuel s'allume.</li>
+      <li>Appuyez sur le bouton FAVORITES qui correspond au toucher voulu (tableau ci-dessous).</li>
+      <li>Appuyez de nouveau sur <span class="btn">TOUCH</span> pour valider.</li>
+    </ol>
+    <div class="table-wrap"><table class="narrow">
+      <tr><th>Bouton</th><th>Toucher</th><th>Pour qui ?</th></tr>
+      <tr><td>1</td><td>Normal</td><td>Comme un piano classique.</td></tr>
+      <tr><td>2 · 3</td><td>Soft 1 · Soft 2</td><td>Doigts légers, débutants : on joue fort sans forcer.</td></tr>
+      <tr><td>4 · 5</td><td>Medium 1 · Medium 2</td><td>Intermédiaire.</td></tr>
+      <tr><td>6 · 7</td><td>Hard 1 · Hard 2</td><td>Jeu puissant : il faut appuyer fort pour jouer fort.</td></tr>
+      <tr><td>8</td><td>Fixed</td><td>Toutes les notes au même volume, quelle que soit la force (comme un orgue).</td></tr>
+    </table></div>
+    <p>Le toucher est mémorisé quand vous enregistrez un <a href="#favoris">favori</a>.</p>
+    <a class="back" href="#top">↑ Retour au sommaire</a>
+  </section>
+
+  <!-- 12 -->
+  <section id="accorder" class="card">
+    <h2>12. Accorder le clavier</h2>
+    <h3>Accordage fin (jouer avec un autre instrument)</h3>
+    <p>Utile si vous jouez avec un instrument qui ne s'accorde pas (un vieux piano, un enregistrement…).</p>
+    <ol class="steps">
+      <li>Appuyez sur <span class="btn">FUNCTION</span> : sa lumière clignote, ainsi qu'une lumière autour du bouton <span class="btn">TREBLE</span>.</li>
+      <li>Tournez <span class="btn">TREBLE</span> : chaque cran monte ou baisse l'accord de 0,25 Hz.</li>
+      <li>Pour revenir au réglage standard (La = 440 Hz), appuyez sur <span class="btn">TREBLE</span>.</li>
+      <li>Appuyez sur <span class="btn">FUNCTION</span> pour sortir.</li>
+    </ol>
+    <p>Ce réglage s'efface quand on éteint le clavier.</p>
+
+    <h3>Courbes d'accordage (pour les curieux)</h3>
+    <p>Les vrais pianos ne sont pas accordés de façon parfaitement « mathématique ». Le SV-1 propose des accordages qui imitent ces petites différences.</p>
+    <ol class="steps">
+      <li>Appuyez sur <span class="btn">FUNCTION</span>.</li>
+      <li>Appuyez sur le bouton FAVORITES voulu : 1 Equal (standard) · 2 Grand Piano 1 · 3 Grand Piano 2 · 4 Electric Piano · 5 Electric Grand · 6 Upright · 7 et 8 réglages personnels (via le logiciel SV-1 Editor).</li>
+    </ol>
+
+    <h3>Bruits « réalistes » (RX Noise)</h3>
+    <p>Certains sons (pianos, orgues) contiennent de petits bruits mécaniques réalistes : bruit des marteaux, des étouffoirs… Pour les doser : appuyez sur <span class="btn">FUNCTION</span>, puis tournez <span class="btn">BASS</span>. Appuyez sur <span class="btn">BASS</span> pour revenir au milieu. Si aucune lumière ne clignote autour de BASS, le son choisi n'a pas ces bruits.</p>
+    <a class="back" href="#top">↑ Retour au sommaire</a>
+  </section>
+
+  <!-- 13 -->
+  <section id="pedales" class="card">
+    <h2>13. Les pédales</h2>
+    <div class="table-wrap"><table>
+      <tr><th>Prise</th><th>Pédale</th><th>Rôle</th></tr>
+      <tr><td><span class="btn">DAMPER</span></td><td>La pédale de sustain fournie (DS-2H)</td><td>Fait durer les notes, comme la pédale de droite d'un piano. Elle gère aussi la « demi-pédale ».</td></tr>
+      <tr><td><span class="btn">PEDAL 1</span></td><td>Interrupteur (ex. Korg PS-1)</td><td>Selon le son : sustain, ou passage lent/rapide de l'effet Rotary pour l'orgue.</td></tr>
+      <tr><td><span class="btn">PEDAL 2</span></td><td>Pédale de volume/expression (Korg XVP-10, EXP-2) ou interrupteur</td><td>Volume au pied, ou commande de l'effet wah.</td></tr>
+    </table></div>
+    <h3>Calibrer les pédales</h3>
+    <p>À faire la première fois, ou si une pédale semble fonctionner « à l'envers » ou mal.</p>
+    <ol class="steps">
+      <li>Branchez les pédales. Mettez la pédale d'expression (si vous en avez une) en position minimum.</li>
+      <li>Éteignez le SV-1.</li>
+      <li>Maintenez le bouton <span class="btn">AUTO/PEDAL</span> (section PRE FX) et rallumez le SV-1.</li>
+      <li>Quand la lumière d'AUTO/PEDAL clignote, relâchez, puis appuyez une fois sur <span class="btn">AUTO/PEDAL</span>.</li>
+      <li><strong>PEDAL 1</strong> : enfoncez-la à fond puis relâchez → le favori 1 s'allume.</li>
+      <li><strong>PEDAL 2</strong> : interrupteur = enfoncez/relâchez ; pédale d'expression = poussez au maximum puis revenez au minimum → le favori 2 s'allume.</li>
+      <li><strong>DAMPER</strong> : enfoncez à fond puis relâchez → le favori 3 s'allume.</li>
+      <li>Si vous avez calibré les 3, le clavier démarre tout seul. Sinon, appuyez sur <span class="btn">AUTO/PEDAL</span> pour terminer.</li>
+    </ol>
+    <a class="back" href="#top">↑ Retour au sommaire</a>
+  </section>
+
+  <!-- 14 -->
+  <section id="demo" class="card">
+    <h2>14. Écouter les démos</h2>
+    <p>Le SV-1 contient 36 morceaux de démonstration, un par son : idéal pour découvrir ce dont il est capable.</p>
+    <ol class="steps">
+      <li>Appuyez <strong>en même temps</strong> sur <span class="btn">TRANSPOSE</span> et <span class="btn">LOCAL OFF</span>. Leurs lumières clignotent.</li>
+      <li>Choisissez un son avec <span class="btn">TYPE</span> et <span class="btn">VARIATION</span> pour entendre sa démo.</li>
+      <li>Pour quitter, appuyez de nouveau sur l'un de ces deux boutons.</li>
+    </ol>
+    <a class="back" href="#top">↑ Retour au sommaire</a>
+  </section>
+
+  <!-- 15 -->
+  <section id="ordinateur" class="card">
+    <h2>15. Avec un ordinateur</h2>
+    <h3>Brancher en USB</h3>
+    <p>Un câble USB (type imprimante, A vers B) relie le SV-1 à l'ordinateur. Il sert à enregistrer ce que vous jouez dans un logiciel de musique (GarageBand, Logic, etc.) ou à faire jouer des sons de l'ordinateur avec le clavier. Le son du SV-1 lui-même ne passe <em>pas</em> par l'USB : pour enregistrer le son, branchez les <a href="#branchements">sorties audio</a> sur une carte son.</p>
+    <h3>LOCAL OFF : à quoi ça sert ?</h3>
+    <p>Quand <span class="btn">LOCAL OFF</span> est allumé, le clavier ne fait plus sonner le SV-1 : il envoie seulement les notes à l'ordinateur. C'est utile quand l'ordinateur renvoie lui-même les notes au SV-1 (sinon chaque note serait jouée deux fois).</p>
+    <div class="box warn"><strong>⚠️ Plus de son ?</strong><p>Vérifiez que la lumière de <span class="btn">LOCAL OFF</span> est <strong>éteinte</strong>. C'est la cause n°1 du « clavier muet ».</p></div>
+    <h3>Le logiciel SV-1 Editor</h3>
+    <p>Logiciel gratuit (Windows et Mac) fourni par Korg. Il permet de modifier plus finement les 36 sons et les 8 favoris, de les sauvegarder sur l'ordinateur et de les échanger. Il se télécharge sur le site de Korg, rubrique support du SV-1.</p>
+    <h3>Canal MIDI (avancé)</h3>
+    <p>Par défaut, le SV-1 utilise le canal 1. Pour changer : appuyez sur <span class="btn">FUNCTION</span>, puis sur une des 16 touches à partir du Do situé deux octaves au-dessus du Do central (Do = canal 1, Do# = canal 2, etc.). Appuyez sur <span class="btn">FUNCTION</span> pour sortir. Le réglage revient au canal 1 à l'extinction.</p>
+    <a class="back" href="#top">↑ Retour au sommaire</a>
+  </section>
+
+  <!-- 16 -->
+  <section id="recettes" class="card">
+    <h2>16. Recettes de sons pour débuter</h2>
+    <p>Quelques points de départ simples, à ajuster à votre goût, puis à <a href="#favoris">enregistrer en favori</a>.</p>
+    <div class="grid">
+      <div class="mini"><h4>🎹 Ballade au piano</h4><p>TYPE Piano, VARIATION 1 ou 2. Réverb Hall avec DEPTH modéré. Ampli et modulation éteints.</p></div>
+      <div class="mini"><h4>🌙 Piano électrique soul</h4><p>E.Piano 1, VARIATION 1. Modulation Chorus léger ou Phaser lent. Réverb Room.</p></div>
+      <div class="mini"><h4>🕺 Funk</h4><p>Clav, VARIATION 2. Pédale d'effet Vox Wah en mode auto. Un peu de DRIVE.</p></div>
+      <div class="mini"><h4>⛪ Orgue rock</h4><p>Organ, VARIATION 1. Modulation Rotary, bouton SLOW/FAST pour accélérer sur le refrain. DRIVE pour plus de grain.</p></div>
+      <div class="mini"><h4>🎻 Nappe de cordes</h4><p>Other, VARIATION 1 ou 2. Réverb Hall généreuse. Toucher « Soft » pour un jeu doux.</p></div>
+      <div class="mini"><h4>🎧 Jouer la nuit</h4><p>Casque branché, MASTER VOLUME bas. Toucher Soft 1 pour garder un son vivant même en jouant doucement.</p></div>
+    </div>
+    <a class="back" href="#top">↑ Retour au sommaire</a>
+  </section>
+
+  <!-- 17 -->
+  <section id="depannage" class="card">
+    <h2>17. Dépannage</h2>
+    <h3>Le clavier ne s'allume pas</h3>
+    <p>Vérifiez que le câble est bien enfoncé des deux côtés (clavier et prise murale) et qu'il n'est pas abîmé.</p>
+    <h3>Pas de son</h3>
+    <ul>
+      <li><span class="btn">MASTER VOLUME</span> au minimum ? Montez-le.</li>
+      <li><span class="btn">LOCAL OFF</span> allumé ? Éteignez-le.</li>
+      <li>Casque mal enfoncé ? Rebranchez-le à fond.</li>
+      <li>Compressor ou Booster avec INTENSITY à zéro, ou ampli avec DRIVE à zéro ? Remontez-les (ou appuyez dessus pour revenir au réglage d'origine).</li>
+      <li>Juste après l'allumage ? La lampe chauffe, attendez quelques secondes.</li>
+    </ul>
+    <h3>Le son ne sort que d'un côté</h3>
+    <p>Avec les sorties XLR, il faut brancher les deux câbles : ces prises ne fonctionnent pas en mono.</p>
+    <h3>Le son est faible</h3>
+    <p>La lampe est peut-être usée. Faites-la remplacer par un centre de service agréé Korg.</p>
+    <h3>Le son grésille ou souffle</h3>
+    <ul>
+      <li>Utilisez des câbles plus courts, ou les sorties XLR sur scène.</li>
+      <li>Avec l'ampli (AMP MODEL) allumé, un léger souffle est normal.</li>
+    </ul>
+    <h3>Des notes restent « coincées »</h3>
+    <p>Maintenez le bouton <span class="btn">ON/OFF</span> de la section EQUALIZER jusqu'à ce que les notes s'arrêtent.</p>
+    <h3>J'ai tout déréglé</h3>
+    <p>Choisissez simplement un autre son puis revenez au premier : tous les réglages d'origine reviennent. Pour un réglage précis, appuyez sur son bouton.</p>
+    <p>Si rien n'y fait, contactez votre revendeur ou un centre de service agréé Korg.</p>
+    <a class="back" href="#top">↑ Retour au sommaire</a>
+  </section>
+
+  <!-- 18 -->
+  <section id="entretien" class="card">
+    <h2>18. Entretien et lampe</h2>
+    <p>La lampe visible à l'avant (VALVE) est une vraie lampe 12AX7, comme dans les amplis de guitare. Elle réchauffe le son des effets d'ampli.</p>
+    <ul>
+      <li>Comme une ampoule, elle s'use avec le temps. Signe d'usure : un son plus faible.</li>
+      <li><strong>Ne la changez jamais vous-même</strong> : risque de choc électrique, de dégâts et perte de garantie. Confiez-la à un centre agréé Korg.</li>
+      <li>Nettoyez le clavier avec un chiffon doux et sec. Pas de produit ménager, d'alcool ni de solvant.</li>
+      <li>Ne posez pas de boisson sur le clavier.</li>
+      <li>Pour le transport, utilisez une housse rembourrée (Korg propose la CB-SV1).</li>
+    </ul>
+    <a class="back" href="#top">↑ Retour au sommaire</a>
+  </section>
+
+  <!-- 19 -->
+  <section id="reinitialiser" class="card">
+    <h2>19. Réinitialisation usine</h2>
+    <div class="box warn"><strong>⚠️ Attention : action définitive</strong><p>Cette opération efface <strong>vos 8 favoris</strong> et tous vos réglages, pour remettre le SV-1 comme à sa sortie d'usine. Notez vos réglages avant (ou sauvegardez-les avec SV-1 Editor).</p></div>
+    <ol class="steps">
+      <li>Éteignez le SV-1.</li>
+      <li>Maintenez le bouton <span class="btn">FUNCTION</span> et rallumez le clavier.</li>
+      <li>Quand la lumière de FUNCTION clignote, relâchez-le.</li>
+      <li>Appuyez de nouveau sur <span class="btn">FUNCTION</span> pour confirmer.</li>
+      <li>Attendez la fin de l'opération.</li>
+    </ol>
+    <p class="lead" style="font-size:.95rem">Astuce : connaître la version du logiciel interne (utile pour le SAV) — clavier allumé, appuyez sur les boutons <span class="btn">SPEED</span> et <span class="btn">INTENSITY</span> de la section PRE FX ; les lumières autour indiquent la version (ex. 1.0).</p>
+    <a class="back" href="#top">↑ Retour au sommaire</a>
+  </section>
+
+  <!-- 20 -->
+  <section id="glossaire" class="card">
+    <h2>20. Petit glossaire</h2>
+    <div class="table-wrap"><table class="narrow">
+      <tr><th>Mot</th><th>Signification</th></tr>
+      <tr><td>Demi-ton</td><td>Le plus petit écart entre deux touches voisines (blanche ou noire).</td></tr>
+      <tr><td>Drive</td><td>La quantité de saturation (grain) de l'ampli.</td></tr>
+      <tr><td>Favori</td><td>Une mémoire qui garde un son et tous ses réglages.</td></tr>
+      <tr><td>Jack / XLR</td><td>Deux types de prises pour câbles audio (XLR = prise de micro).</td></tr>
+      <tr><td>LED</td><td>Petite lumière sur la façade.</td></tr>
+      <tr><td>MIDI</td><td>Langage qui permet aux instruments et ordinateurs d'échanger des notes (pas du son).</td></tr>
+      <tr><td>Mono / stéréo</td><td>Un seul canal sonore / deux canaux (gauche et droite).</td></tr>
+      <tr><td>Réverbération</td><td>L'écho naturel d'une pièce, qui donne de l'espace au son.</td></tr>
+      <tr><td>Sustain</td><td>Prolonger les notes (pédale de droite du piano).</td></tr>
+      <tr><td>Toucher (vélocité)</td><td>La façon dont le clavier réagit à la force de frappe.</td></tr>
+      <tr><td>Transposer</td><td>Décaler toutes les notes pour jouer dans une autre tonalité.</td></tr>
+    </table></div>
+    <a class="back" href="#top">↑ Retour au sommaire</a>
+  </section>
+
+  <!-- 21 -->
+  <section id="memo" class="card">
+    <h2>21. Aide-mémoire</h2>
+    <div class="table-wrap"><table>
+      <tr><th>Je veux…</th><th>Je fais…</th></tr>
+      <tr><td>Changer de son</td><td>TYPE (famille) puis VARIATION (1 à 6).</td></tr>
+      <tr><td>Revenir au réglage d'origine d'un bouton</td><td>J'appuie sur le bouton.</td></tr>
+      <tr><td>Enregistrer un favori</td><td>Maintenir un bouton FAVORITES, puis rappuyer quand il clignote.</td></tr>
+      <tr><td>Rappeler un favori</td><td>Appui court sur le bouton FAVORITES.</td></tr>
+      <tr><td>Transposer</td><td>Maintenir TRANSPOSE 3 s, puis une touche autour du Do central.</td></tr>
+      <tr><td>Régler le toucher</td><td>TOUCH → bouton FAVORITES 1 à 8 → TOUCH.</td></tr>
+      <tr><td>Accorder finement</td><td>FUNCTION → tourner TREBLE → FUNCTION.</td></tr>
+      <tr><td>Orgue : rotation lente/rapide</td><td>Bouton SLOW/FAST (section MODULATION).</td></tr>
+      <tr><td>Caler l'écho sur le tempo</td><td>St. Delay + taper sur TAP en rythme.</td></tr>
+      <tr><td>Écouter les démos</td><td>TRANSPOSE + LOCAL OFF ensemble.</td></tr>
+      <tr><td>Arrêter des notes coincées</td><td>Maintenir ON/OFF de l'EQUALIZER.</td></tr>
+    </table></div>
+
+    <h3>Mes favoris</h3>
+    <p>Recopiez ce tableau sur papier ou dans vos notes :</p>
+    <div class="table-wrap"><table class="narrow">
+      <tr><th>N°</th><th>Morceau / usage</th><th>Son de départ</th></tr>
+      <tr><td>1</td><td></td><td></td></tr>
+      <tr><td>2</td><td></td><td></td></tr>
+      <tr><td>3</td><td></td><td></td></tr>
+      <tr><td>4</td><td></td><td></td></tr>
+      <tr><td>5</td><td></td><td></td></tr>
+      <tr><td>6</td><td></td><td></td></tr>
+      <tr><td>7</td><td></td><td></td></tr>
+      <tr><td>8</td><td></td><td></td></tr>
+    </table></div>
+    <a class="back" href="#top">↑ Retour au sommaire</a>
+  </section>
+
+</main>
+
+<footer>
+  Guide indépendant, rédigé pour aider les débutants. Il ne remplace pas le mode d'emploi officiel de Korg, disponible sur le site korg.com (rubrique support du SV-1). Korg et SV-1 sont des marques de Korg Inc.
+</footer>
+
+<script>
+  (function(){
+    var btn = document.getElementById('menuBtn');
+    var drawer = document.getElementById('drawer');
+    function close(){ drawer.classList.remove('open'); btn.setAttribute('aria-expanded','false'); btn.textContent='☰ Sommaire'; }
+    btn.addEventListener('click', function(){
+      var open = drawer.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.textContent = open ? '✕ Fermer' : '☰ Sommaire';
+    });
+    drawer.addEventListener('click', function(e){ if (e.target.tagName === 'A') close(); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+  })();
+</script>
+</body>
+</html>
