@@ -39,6 +39,10 @@
   .topbar .brand span{color:#f87171}
   .menu-btn{background:transparent; color:inherit; border:1px solid rgba(255,255,255,.35);
     border-radius:10px; padding:.4rem .75rem; font:inherit; font-size:.95rem; cursor:pointer}
+  .topbar .brand em{font-style:normal}
+  @media (max-width:430px){ .topbar .brand em{display:none} }
+  .top-actions{display:flex; gap:.4rem}
+  .topbar a.menu-btn{font-weight:400; letter-spacing:0; white-space:nowrap}
   .drawer{display:none; position:fixed; inset:52px 0 0 0; z-index:19; background:var(--paper);
     overflow-y:auto; padding:1rem 1.2rem 3rem; border-top:1px solid var(--line)}
   .drawer.open{display:block}
@@ -172,8 +176,11 @@
 <body>
 
 <header class="topbar">
-  <a class="brand" href="#top">KORG <span>SV-1</span> · Guide</a>
-  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="drawer">☰ Sommaire</button>
+  <a class="brand" href="#top">KORG <span>SV-1</span><em> · Guide</em></a>
+  <div class="top-actions">
+    <a class="menu-btn" id="wizHome" href="#assistant">🎛️ Cas d'usage</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="drawer">☰ Sommaire</button>
+  </div>
 </header>
 
 <nav class="drawer" id="drawer" aria-label="Sommaire">
@@ -984,6 +991,16 @@
         return;
       }
       render(true);
+    });
+    // Bouton du haut : retour au choix rapide (tâche)
+    var home = document.getElementById('wizHome');
+    if (home) home.addEventListener('click', function(e){
+      e.preventDefault();
+      var dr = document.getElementById('drawer'), mb = document.getElementById('menuBtn');
+      if (dr && dr.classList.contains('open')) mb.click();
+      st = {task:null, inst:null, choice:null};
+      render(false);
+      document.getElementById('assistant').scrollIntoView({behavior:'smooth'});
     });
     // Ouvrir directement un réglage partagé : #assistant/son/orgue/doux
     var m = location.hash.match(/^#assistant\/(son|effet)\/(\w+)\/(\w+)$/);
