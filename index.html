@@ -100,6 +100,71 @@
   .chain span{background:var(--accent-soft); border-radius:8px; padding:.25rem .55rem; font-weight:600}
   .chain i{color:var(--muted); font-style:normal}
 
+  /* Assistant de réglage */
+  .wiz{border:2px solid var(--accent); padding:1.3rem 1.1rem 1.4rem}
+  .wiz h2{margin-bottom:.2rem}
+  .wiz-prog{display:flex; gap:.35rem; margin:0 0 1.1rem; padding:0; list-style:none; flex-wrap:wrap}
+  .wiz-prog li{flex:1 1 0; min-width:70px; font-size:.78rem; font-weight:600; color:var(--muted);
+    border-top:4px solid var(--line); padding-top:.35rem}
+  .wiz-prog li.done{color:var(--ink); border-color:var(--accent)}
+  .wiz-prog li.now{color:var(--accent); border-color:var(--accent)}
+  .wiz-q{font-size:1.2rem; font-weight:700; margin:0 0 .8rem}
+  .wiz-picked{display:flex; flex-wrap:wrap; gap:.4rem; margin:0 0 .9rem}
+  .chip{background:var(--accent-soft); border-radius:999px; padding:.2rem .7rem; font-size:.88rem; font-weight:600}
+  .tiles{display:grid; gap:.6rem; grid-template-columns:1fr 1fr}
+  @media (min-width:640px){ .tiles{grid-template-columns:repeat(3,1fr)} .tiles.two{grid-template-columns:1fr 1fr} }
+  .tiles.two{grid-template-columns:1fr}
+  @media (min-width:420px){ .tiles.two{grid-template-columns:1fr 1fr} }
+  .tile{display:flex; flex-direction:column; align-items:flex-start; gap:.15rem; text-align:left; cursor:pointer;
+    background:var(--bg); color:var(--ink); border:2px solid var(--line); border-radius:12px;
+    padding:.85rem .85rem .9rem; font:inherit; min-height:96px; transition:border-color .15s, transform .1s}
+  .tile:hover{border-color:var(--accent)}
+  .tile:active{transform:scale(.98)}
+  .tile:focus-visible{outline:3px solid var(--accent); outline-offset:2px}
+  .tile .ico{font-size:1.7rem; line-height:1}
+  .tile b{font-size:1.05rem}
+  .tile small{color:var(--muted); font-size:.85rem; line-height:1.35}
+  .tiles.two .tile{min-height:120px; padding:1.1rem}
+  .tiles.two .tile b{font-size:1.2rem}
+  .wiz-nav{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1.1rem}
+  .wbtn{font:inherit; font-size:.95rem; font-weight:600; cursor:pointer; border-radius:10px; padding:.55rem 1rem;
+    border:1px solid var(--line); background:var(--paper); color:var(--ink)}
+  .wbtn.primary{background:var(--accent); border-color:var(--accent); color:#fff}
+  .wbtn:focus-visible{outline:3px solid var(--accent); outline-offset:2px}
+  .res-title{font-size:1.35rem; font-weight:800; margin:.1rem 0 .3rem}
+  .res-why{color:var(--muted); margin:0 0 1rem}
+  .res-step{font-weight:700; margin:1.2rem 0 .5rem; display:flex; gap:.6rem; align-items:center}
+  .res-step i{font-style:normal; flex:none; width:1.85rem; height:1.85rem; border-radius:50%; background:var(--accent);
+    color:#fff; display:flex; align-items:center; justify-content:center; font-size:.95rem}
+  .soundbox{display:flex; flex-wrap:wrap; gap:.6rem 1.2rem; align-items:center; background:var(--bg);
+    border:1px solid var(--line); border-radius:12px; padding:.8rem 1rem}
+  .soundbox .big{font-size:1.15rem; font-weight:800}
+  .soundbox .big em{font-style:normal; color:var(--accent)}
+  .fx{display:grid; gap:.6rem; grid-template-columns:1fr}
+  @media (min-width:640px){ .fx{grid-template-columns:1fr 1fr} }
+  .fxc{background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:.75rem .85rem}
+  .fxc.off{opacity:.62}
+  .fxh{display:flex; justify-content:space-between; align-items:center; gap:.5rem; margin-bottom:.35rem}
+  .fxh b{font-size:.8rem; letter-spacing:.06em; color:var(--accent)}
+  .lamp{font-size:.78rem; font-weight:700; display:inline-flex; align-items:center; gap:.3rem; white-space:nowrap}
+  .lamp::before{content:""; width:.6rem; height:.6rem; border-radius:50%; background:var(--line)}
+  .lamp.on::before{background:var(--tip-line); box-shadow:0 0 6px var(--tip-line)}
+  .fxt{font-size:.92rem; margin:.1rem 0 .35rem}
+  .knobs{display:flex; flex-wrap:wrap; gap:.4rem .9rem}
+  .knob{display:flex; flex-direction:column; align-items:center; width:84px; text-align:center}
+  .knob svg{width:58px; height:58px}
+  .knob .kn{font-size:.72rem; font-weight:700; letter-spacing:.04em}
+  .knob .kv{font-size:.75rem; color:var(--muted); line-height:1.25}
+  .k-body{fill:var(--paper); stroke:var(--muted); stroke-width:1.5}
+  .k-ptr{stroke:var(--ink); stroke-width:3; stroke-linecap:round}
+  .k-led{fill:var(--line)}
+  .k-led.lit{fill:var(--accent)}
+  .res-tips{margin:.3rem 0 0; padding-left:1.2rem}
+  .res-tips li{margin:.25rem 0}
+  .copied{font-size:.85rem; color:var(--tip-line); align-self:center}
+  .drawer .drawer-cta{color:var(--accent); font-weight:700; padding:.45rem 0 .7rem; border-bottom:1px solid var(--line); margin-bottom:.5rem}
+  @media print{ .wiz-nav,.wiz-prog{display:none} }
+
   footer{max-width:var(--maxw); margin:0 auto; padding:1rem 1rem 3rem; color:var(--muted); font-size:.85rem}
   @media print{ .topbar,.drawer,.back{display:none} body{background:#fff} .card{border:0; padding:0} }
 </style>
@@ -112,23 +177,21 @@
 </header>
 
 <nav class="drawer" id="drawer" aria-label="Sommaire">
+  <a class="drawer-cta" href="#assistant">🎛️ Cas d'usage</a>
   <ol>
-    <li><a href="#bienvenue">Bienvenue</a></li>
-    <li><a href="#installation">Installer le clavier</a></li>
     <li><a href="#branchements">Les branchements</a></li>
     <li><a href="#allumer">Allumer et éteindre</a></li>
-    <li><a href="#facade">Découvrir la façade</a></li>
+    <li><a href="#facade">La façade</a></li>
     <li><a href="#sons">Choisir un son</a></li>
     <li><a href="#liste-sons">La liste des 36 sons</a></li>
     <li><a href="#effets">Les effets</a></li>
-    <li><a href="#favoris">Les favoris (mémoires)</a></li>
+    <li><a href="#favoris">Les favoris</a></li>
     <li><a href="#transposer">Transposer</a></li>
     <li><a href="#toucher">Régler le toucher</a></li>
     <li><a href="#accorder">Accorder le clavier</a></li>
     <li><a href="#pedales">Les pédales</a></li>
     <li><a href="#demo">Écouter les démos</a></li>
     <li><a href="#ordinateur">Avec un ordinateur</a></li>
-    <li><a href="#recettes">Recettes de sons</a></li>
     <li><a href="#depannage">Dépannage</a></li>
     <li><a href="#entretien">Entretien et lampe</a></li>
     <li><a href="#reinitialiser">Réinitialisation usine</a></li>
@@ -140,30 +203,32 @@
 <main id="top">
 
   <div class="hero">
-    <div class="kicker">Guide d'utilisation simplifié</div>
-    <h1>Korg SV-1 Stage Vintage Piano</h1>
-    <p class="lead">Tout ce qu'il faut savoir pour jouer, régler et garder vos sons préférés, expliqué simplement, sans jargon technique. Valable pour les modèles 73 et 88 touches.</p>
+    <h1>Korg SV-1 <span style="font-weight:500;color:var(--muted);font-size:.6em">(73 / 88 touches)</span></h1>
   </div>
 
+  <section id="assistant" class="card wiz" aria-live="polite">
+    <h2>🎛️ Cas d'usage</h2>
+    <ol class="wiz-prog" id="wizProg"></ol>
+    <div id="wizBody"></div>
+    <noscript><p>JavaScript requis.</p></noscript>
+  </section>
+
   <div class="card toc">
-    <strong>Sommaire</strong>
+    <strong>Référence</strong>
     <ol>
-      <li><a href="#bienvenue">Bienvenue</a></li>
-      <li><a href="#installation">Installer le clavier</a></li>
       <li><a href="#branchements">Les branchements</a></li>
       <li><a href="#allumer">Allumer et éteindre</a></li>
-      <li><a href="#facade">Découvrir la façade</a></li>
+      <li><a href="#facade">La façade</a></li>
       <li><a href="#sons">Choisir un son</a></li>
       <li><a href="#liste-sons">La liste des 36 sons</a></li>
       <li><a href="#effets">Les effets</a></li>
-      <li><a href="#favoris">Les favoris (mémoires)</a></li>
+      <li><a href="#favoris">Les favoris</a></li>
       <li><a href="#transposer">Transposer</a></li>
       <li><a href="#toucher">Régler le toucher</a></li>
       <li><a href="#accorder">Accorder le clavier</a></li>
       <li><a href="#pedales">Les pédales</a></li>
       <li><a href="#demo">Écouter les démos</a></li>
       <li><a href="#ordinateur">Avec un ordinateur</a></li>
-      <li><a href="#recettes">Recettes de sons</a></li>
       <li><a href="#depannage">Dépannage</a></li>
       <li><a href="#entretien">Entretien et lampe</a></li>
       <li><a href="#reinitialiser">Réinitialisation usine</a></li>
@@ -172,42 +237,8 @@
     </ol>
   </div>
 
-  <!-- 1 -->
-  <section id="bienvenue" class="card">
-    <h2>1. Bienvenue</h2>
-    <p>Le SV-1 est un <strong>piano de scène « vintage »</strong>. Il reproduit les claviers célèbres des années 60 à 80 : pianos électriques, pianos à queue, orgues, clavinets, cordes… Sa particularité : <strong>tout se règle avec des boutons visibles sur la façade</strong>, sans écran ni menu compliqué.</p>
-    <div class="grid">
-      <div class="mini"><h4>36 sons</h4><p>6 familles × 6 variantes, choisies avec deux gros boutons rotatifs.</p></div>
-      <div class="mini"><h4>8 favoris</h4><p>Huit touches pour garder vos réglages préférés et les rappeler d'un geste.</p></div>
-      <div class="mini"><h4>Des effets « comme avant »</h4><p>Pédales d'effet, amplis, chorus, réverbération… comme sur une vraie scène.</p></div>
-      <div class="mini"><h4>Une vraie lampe</h4><p>Une lampe (tube 12AX7) est montée à l'avant : elle donne de la chaleur au son.</p></div>
-    </div>
-    <div class="box tip"><strong>💡 À retenir</strong><p>Vous ne pouvez rien « casser » en tournant les boutons. Pour revenir au réglage d'origine d'un bouton, il suffit d'<strong>appuyer dessus</strong> (les boutons rotatifs sont aussi des boutons-poussoirs).</p></div>
-    <a class="back" href="#top">↑ Retour au sommaire</a>
-  </section>
-
-  <!-- 2 -->
-  <section id="installation" class="card">
-    <h2>2. Installer le clavier</h2>
-    <h3>Ce qu'il y a dans la boîte</h3>
-    <ul>
-      <li>Le clavier SV-1</li>
-      <li>Le câble d'alimentation</li>
-      <li>Le pupitre (pour poser vos partitions)</li>
-      <li>La pédale de sustain Korg DS-2H</li>
-      <li>Le mode d'emploi et un disque d'accessoires (logiciel SV-1 Editor)</li>
-    </ul>
-    <h3>Où le poser</h3>
-    <p>Le SV-1 pèse environ <strong>17,5 kg</strong> (73 touches) ou <strong>20,5 kg</strong> (88 touches) : prévoyez un support solide ou une table stable, et soyez deux pour le porter.</p>
-    <div class="box warn"><strong>⚠️ Évitez</strong><p>Le plein soleil, les endroits très chauds, très humides ou poussiéreux, et la proximité d'un radiateur.</p></div>
-    <h3>Monter le pupitre</h3>
-    <p>Glissez les deux pieds du pupitre dans les deux encoches situées à l'arrière du clavier.</p>
-    <a class="back" href="#top">↑ Retour au sommaire</a>
-  </section>
-
-  <!-- 3 -->
   <section id="branchements" class="card">
-    <h2>3. Les branchements</h2>
+    <h2>1. Les branchements</h2>
     <div class="box warn"><strong>⚠️ Avant de brancher quoi que ce soit</strong><p>Éteignez le SV-1 <em>et</em> l'appareil que vous voulez brancher (enceinte, ampli, table de mixage). Baissez le volume.</p></div>
 
     <h3>L'alimentation</h3>
@@ -235,26 +266,23 @@
     <a class="back" href="#top">↑ Retour au sommaire</a>
   </section>
 
-  <!-- 4 -->
   <section id="allumer" class="card">
-    <h2>4. Allumer et éteindre</h2>
+    <h2>2. Allumer et éteindre</h2>
     <ol class="steps">
       <li>Tournez le bouton <span class="btn">MASTER VOLUME</span> au minimum.</li>
       <li>Appuyez sur l'interrupteur <span class="btn">POWER</span>.</li>
-      <li>Patientez quelques secondes : la lampe doit chauffer, un peu comme une ancienne radio.</li>
+      <li>Attendez quelques secondes (la lampe chauffe).</li>
       <li>Allumez ensuite vos enceintes ou votre ampli.</li>
-      <li>Jouez quelques notes en montant doucement le volume.</li>
+      <li>Montez <span class="btn">MASTER VOLUME</span> progressivement.</li>
     </ol>
-    <p>Pour éteindre, faites l'inverse : <strong>d'abord les enceintes</strong>, ensuite le SV-1.</p>
-    <div class="box tip"><strong>💡 Normal, pas d'inquiétude</strong><p>Un petit éclair dans la lampe ou un léger bruit à l'allumage est normal : la lampe est encore froide. Cela n'abîme rien.</p></div>
-    <div class="box tip"><strong>💡 Économisez la lampe</strong><p>Éteignez le SV-1 quand vous ne jouez pas : vous économisez de l'électricité et la lampe dure plus longtemps.</p></div>
+    <p>Extinction : <strong>enceintes d'abord</strong>, SV-1 ensuite.</p>
+    <p>Un éclair dans la lampe ou un léger bruit à l'allumage est normal (lampe froide). Éteindre le SV-1 entre deux sessions prolonge la vie de la lampe.</p>
     <a class="back" href="#top">↑ Retour au sommaire</a>
   </section>
 
-  <!-- 5 -->
   <section id="facade" class="card">
-    <h2>5. Découvrir la façade</h2>
-    <p>La façade se lit de gauche à droite, un peu comme le chemin que suit le son. Touchez une zone pour aller à son explication :</p>
+    <h2>3. La façade</h2>
+    <p>De gauche à droite, dans l'ordre du trajet du son :</p>
     <div class="panel">
       <a href="#entretien"><b>VALVE</b>La lampe</a>
       <a href="#eq"><b>EQUALIZER</b>Graves / médiums / aigus</a>
@@ -267,7 +295,7 @@
       <a href="#transposer"><b>TRANSPOSE · LOCAL OFF · TOUCH · FUNCTION</b>Réglages</a>
       <a href="#allumer"><b>MASTER VOLUME · POWER</b>Volume et marche/arrêt</a>
     </div>
-    <h3>Trois gestes à connaître</h3>
+    <h3>Commandes</h3>
     <ul>
       <li><strong>Tourner</strong> un bouton : change le réglage. Les petites lumières (LED) autour du bouton montrent où vous en êtes.</li>
       <li><strong>Appuyer</strong> sur un bouton rotatif : le remet à sa valeur d'origine.</li>
@@ -276,9 +304,8 @@
     <a class="back" href="#top">↑ Retour au sommaire</a>
   </section>
 
-  <!-- 6 -->
   <section id="sons" class="card">
-    <h2>6. Choisir un son</h2>
+    <h2>4. Choisir un son</h2>
     <p>Dans la section <span class="btn">SOUND</span>, deux boutons suffisent :</p>
     <ol class="steps">
       <li>Tournez <span class="btn">TYPE</span> pour choisir la <strong>famille</strong> : E.Piano 1, E.Piano 2, Clav, Piano, Organ ou Other (cordes, chœurs, cuivres).</li>
@@ -289,9 +316,8 @@
     <a class="back" href="#top">↑ Retour au sommaire</a>
   </section>
 
-  <!-- 7 -->
   <section id="liste-sons" class="card">
-    <h2>7. La liste des 36 sons</h2>
+    <h2>5. La liste des 36 sons</h2>
     <p>Les sons sont rangés par famille (bouton <span class="btn">TYPE</span>), puis par numéro de variante (bouton <span class="btn">VARIATION</span>).</p>
     <h3>TYPE : E.Piano 1 — pianos électriques à lames</h3>
     <div class="table-wrap"><table>
@@ -361,9 +387,8 @@
     <a class="back" href="#top">↑ Retour au sommaire</a>
   </section>
 
-  <!-- 8 -->
   <section id="effets" class="card">
-    <h2>8. Les effets</h2>
+    <h2>6. Les effets</h2>
     <p>Chaque son passe par une série d'effets, dans cet ordre :</p>
     <div class="chain"><span>Son</span><i>→</i><span>Égaliseur</span><i>→</i><span>Pédale d'effet</span><i>→</i><span>Ampli</span><i>→</i><span>Modulation</span><i>→</i><span>Réverb / Écho</span><i>→</i><span>Sortie</span></div>
     <p>Chaque section a son bouton <span class="btn">ON/OFF</span>. Quand vous choisissez un son, les effets se mettent automatiquement sur des réglages adaptés — libre à vous de les modifier.</p>
@@ -412,25 +437,23 @@
     <a class="back" href="#top">↑ Retour au sommaire</a>
   </section>
 
-  <!-- 9 -->
   <section id="favoris" class="card">
-    <h2>9. Les favoris (mémoires)</h2>
-    <p>Les 8 boutons <span class="btn">FAVORITES</span> fonctionnent comme les présélections d'un autoradio : ils gardent <strong>un son avec tous vos réglages d'effets</strong>, le toucher et l'accordage.</p>
+    <h2>7. Les favoris (mémoires)</h2>
+    <p>Les 8 boutons <span class="btn">FAVORITES</span> mémorisent : <strong>le son, tous les réglages d'effets</strong>, le toucher et l'accordage.</p>
     <h3>Enregistrer un favori</h3>
     <ol class="steps">
       <li>Réglez le son et les effets comme vous le souhaitez.</li>
       <li><strong>Maintenez appuyé</strong> l'un des 8 boutons FAVORITES.</li>
       <li>Quand sa lumière clignote, <strong>appuyez une nouvelle fois</strong> dessus. C'est enregistré.</li>
     </ol>
-    <div class="box warn"><strong>⚠️ Attention</strong><p>Enregistrer sur un bouton remplace ce qu'il contenait. Pensez à noter quel favori correspond à quel morceau (un tableau est proposé dans l'<a href="#memo">aide-mémoire</a>).</p></div>
+    <div class="box warn"><strong>⚠️ Attention</strong><p>Enregistrer sur un bouton remplace ce qu'il contenait. Tableau des favoris : voir l'<a href="#memo">aide-mémoire</a>.</p></div>
     <h3>Rappeler un favori</h3>
-    <p>Appuyez simplement (sans maintenir) sur le bouton du favori. Le son et tous ses réglages reviennent instantanément.</p>
+    <p>Appui court sur le bouton du favori.</p>
     <a class="back" href="#top">↑ Retour au sommaire</a>
   </section>
 
-  <!-- 10 -->
   <section id="transposer" class="card">
-    <h2>10. Transposer (changer de tonalité)</h2>
+    <h2>8. Transposer (changer de tonalité)</h2>
     <p>La transposition décale toutes les notes vers le haut ou le bas. Pratique pour accompagner un chanteur ou jouer un morceau difficile avec un doigté plus simple.</p>
     <ol class="steps">
       <li>Maintenez <span class="btn">TRANSPOSE</span> environ <strong>3 secondes</strong>, jusqu'à ce que sa lumière clignote.</li>
@@ -449,9 +472,8 @@
     <a class="back" href="#top">↑ Retour au sommaire</a>
   </section>
 
-  <!-- 11 -->
   <section id="toucher" class="card">
-    <h2>11. Régler le toucher</h2>
+    <h2>9. Régler le toucher</h2>
     <p>Le « toucher » décide de la force qu'il faut mettre dans les touches pour jouer fort.</p>
     <ol class="steps">
       <li>Appuyez sur <span class="btn">TOUCH</span>. Sa lumière clignote et le bouton FAVORITES du réglage actuel s'allume.</li>
@@ -470,9 +492,8 @@
     <a class="back" href="#top">↑ Retour au sommaire</a>
   </section>
 
-  <!-- 12 -->
   <section id="accorder" class="card">
-    <h2>12. Accorder le clavier</h2>
+    <h2>10. Accorder le clavier</h2>
     <h3>Accordage fin (jouer avec un autre instrument)</h3>
     <p>Utile si vous jouez avec un instrument qui ne s'accorde pas (un vieux piano, un enregistrement…).</p>
     <ol class="steps">
@@ -495,9 +516,8 @@
     <a class="back" href="#top">↑ Retour au sommaire</a>
   </section>
 
-  <!-- 13 -->
   <section id="pedales" class="card">
-    <h2>13. Les pédales</h2>
+    <h2>11. Les pédales</h2>
     <div class="table-wrap"><table>
       <tr><th>Prise</th><th>Pédale</th><th>Rôle</th></tr>
       <tr><td><span class="btn">DAMPER</span></td><td>La pédale de sustain fournie (DS-2H)</td><td>Fait durer les notes, comme la pédale de droite d'un piano. Elle gère aussi la « demi-pédale ».</td></tr>
@@ -519,9 +539,8 @@
     <a class="back" href="#top">↑ Retour au sommaire</a>
   </section>
 
-  <!-- 14 -->
   <section id="demo" class="card">
-    <h2>14. Écouter les démos</h2>
+    <h2>12. Écouter les démos</h2>
     <p>Le SV-1 contient 36 morceaux de démonstration, un par son : idéal pour découvrir ce dont il est capable.</p>
     <ol class="steps">
       <li>Appuyez <strong>en même temps</strong> sur <span class="btn">TRANSPOSE</span> et <span class="btn">LOCAL OFF</span>. Leurs lumières clignotent.</li>
@@ -531,9 +550,8 @@
     <a class="back" href="#top">↑ Retour au sommaire</a>
   </section>
 
-  <!-- 15 -->
   <section id="ordinateur" class="card">
-    <h2>15. Avec un ordinateur</h2>
+    <h2>13. Avec un ordinateur</h2>
     <h3>Brancher en USB</h3>
     <p>Un câble USB (type imprimante, A vers B) relie le SV-1 à l'ordinateur. Il sert à enregistrer ce que vous jouez dans un logiciel de musique (GarageBand, Logic, etc.) ou à faire jouer des sons de l'ordinateur avec le clavier. Le son du SV-1 lui-même ne passe <em>pas</em> par l'USB : pour enregistrer le son, branchez les <a href="#branchements">sorties audio</a> sur une carte son.</p>
     <h3>LOCAL OFF : à quoi ça sert ?</h3>
@@ -546,24 +564,8 @@
     <a class="back" href="#top">↑ Retour au sommaire</a>
   </section>
 
-  <!-- 16 -->
-  <section id="recettes" class="card">
-    <h2>16. Recettes de sons pour débuter</h2>
-    <p>Quelques points de départ simples, à ajuster à votre goût, puis à <a href="#favoris">enregistrer en favori</a>.</p>
-    <div class="grid">
-      <div class="mini"><h4>🎹 Ballade au piano</h4><p>TYPE Piano, VARIATION 1 ou 2. Réverb Hall avec DEPTH modéré. Ampli et modulation éteints.</p></div>
-      <div class="mini"><h4>🌙 Piano électrique soul</h4><p>E.Piano 1, VARIATION 1. Modulation Chorus léger ou Phaser lent. Réverb Room.</p></div>
-      <div class="mini"><h4>🕺 Funk</h4><p>Clav, VARIATION 2. Pédale d'effet Vox Wah en mode auto. Un peu de DRIVE.</p></div>
-      <div class="mini"><h4>⛪ Orgue rock</h4><p>Organ, VARIATION 1. Modulation Rotary, bouton SLOW/FAST pour accélérer sur le refrain. DRIVE pour plus de grain.</p></div>
-      <div class="mini"><h4>🎻 Nappe de cordes</h4><p>Other, VARIATION 1 ou 2. Réverb Hall généreuse. Toucher « Soft » pour un jeu doux.</p></div>
-      <div class="mini"><h4>🎧 Jouer la nuit</h4><p>Casque branché, MASTER VOLUME bas. Toucher Soft 1 pour garder un son vivant même en jouant doucement.</p></div>
-    </div>
-    <a class="back" href="#top">↑ Retour au sommaire</a>
-  </section>
-
-  <!-- 17 -->
   <section id="depannage" class="card">
-    <h2>17. Dépannage</h2>
+    <h2>14. Dépannage</h2>
     <h3>Le clavier ne s'allume pas</h3>
     <p>Vérifiez que le câble est bien enfoncé des deux côtés (clavier et prise murale) et qu'il n'est pas abîmé.</p>
     <h3>Pas de son</h3>
@@ -591,23 +593,20 @@
     <a class="back" href="#top">↑ Retour au sommaire</a>
   </section>
 
-  <!-- 18 -->
   <section id="entretien" class="card">
-    <h2>18. Entretien et lampe</h2>
-    <p>La lampe visible à l'avant (VALVE) est une vraie lampe 12AX7, comme dans les amplis de guitare. Elle réchauffe le son des effets d'ampli.</p>
+    <h2>15. Entretien et lampe</h2>
+    <p>Lampe à l'avant (VALVE) : tube 12AX7, utilisé par les effets d'ampli.</p>
     <ul>
-      <li>Comme une ampoule, elle s'use avec le temps. Signe d'usure : un son plus faible.</li>
+      <li>Elle s'use. Signe d'usure : son plus faible.</li>
       <li><strong>Ne la changez jamais vous-même</strong> : risque de choc électrique, de dégâts et perte de garantie. Confiez-la à un centre agréé Korg.</li>
       <li>Nettoyez le clavier avec un chiffon doux et sec. Pas de produit ménager, d'alcool ni de solvant.</li>
-      <li>Ne posez pas de boisson sur le clavier.</li>
       <li>Pour le transport, utilisez une housse rembourrée (Korg propose la CB-SV1).</li>
     </ul>
     <a class="back" href="#top">↑ Retour au sommaire</a>
   </section>
 
-  <!-- 19 -->
   <section id="reinitialiser" class="card">
-    <h2>19. Réinitialisation usine</h2>
+    <h2>16. Réinitialisation usine</h2>
     <div class="box warn"><strong>⚠️ Attention : action définitive</strong><p>Cette opération efface <strong>vos 8 favoris</strong> et tous vos réglages, pour remettre le SV-1 comme à sa sortie d'usine. Notez vos réglages avant (ou sauvegardez-les avec SV-1 Editor).</p></div>
     <ol class="steps">
       <li>Éteignez le SV-1.</li>
@@ -620,9 +619,8 @@
     <a class="back" href="#top">↑ Retour au sommaire</a>
   </section>
 
-  <!-- 20 -->
   <section id="glossaire" class="card">
-    <h2>20. Petit glossaire</h2>
+    <h2>17. Petit glossaire</h2>
     <div class="table-wrap"><table class="narrow">
       <tr><th>Mot</th><th>Signification</th></tr>
       <tr><td>Demi-ton</td><td>Le plus petit écart entre deux touches voisines (blanche ou noire).</td></tr>
@@ -640,9 +638,8 @@
     <a class="back" href="#top">↑ Retour au sommaire</a>
   </section>
 
-  <!-- 21 -->
   <section id="memo" class="card">
-    <h2>21. Aide-mémoire</h2>
+    <h2>18. Aide-mémoire</h2>
     <div class="table-wrap"><table>
       <tr><th>Je veux…</th><th>Je fais…</th></tr>
       <tr><td>Changer de son</td><td>TYPE (famille) puis VARIATION (1 à 6).</td></tr>
@@ -659,7 +656,6 @@
     </table></div>
 
     <h3>Mes favoris</h3>
-    <p>Recopiez ce tableau sur papier ou dans vos notes :</p>
     <div class="table-wrap"><table class="narrow">
       <tr><th>N°</th><th>Morceau / usage</th><th>Son de départ</th></tr>
       <tr><td>1</td><td></td><td></td></tr>
@@ -677,7 +673,7 @@
 </main>
 
 <footer>
-  Guide indépendant, rédigé pour aider les débutants. Il ne remplace pas le mode d'emploi officiel de Korg, disponible sur le site korg.com (rubrique support du SV-1). Korg et SV-1 sont des marques de Korg Inc.
+  Guide non officiel. Mode d'emploi Korg : korg.com, rubrique support SV-1.
 </footer>
 
 <script>
@@ -692,6 +688,310 @@
     });
     drawer.addEventListener('click', function(e){ if (e.target.tagName === 'A') close(); });
     document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+  })();
+
+  /* ===== Assistant de réglage ===== */
+  (function(){
+    // Noms des 36 sons : SOUNDS[TYPE][VARIATION-1] = [nom, description]
+    var SOUNDS = {
+      'E.Piano 1':[['Tine EP/Amp','piano électrique des années 70, doux et rond'],['Tine EP/Phaser','piano électrique avec phaser, très soul'],['Tremolo EP','piano électrique qui va et vient de gauche à droite'],['Dyno EP','piano électrique brillant et piquant'],['VPM Piano','piano électrique numérique très « pop »'],['VPM Tine','piano numérique plus tranchant']],
+      'E.Piano 2':[['Reed EP 1','piano électrique à anches, un peu « grinçant »'],['Reed EP 2','piano à anches au son classique'],['Electric Grand','piano de scène des années 70'],['SG-1D Piano','ancien piano numérique Korg'],["80's Synth Piano",'piano de synthé des années 80'],['MIDI Grand','mélange piano acoustique et électrique']],
+      'Clav':[['Clav AC','clavinet percussif et funky'],['Clav BC','clavinet agressif, esprit funk'],['Clav BD','clavinet, autre couleur'],['Clav AD','clavinet, couleur plus ronde'],['ElectroPno','piano électromécanique au son doux'],['ElectraPno','piano électronique du rock progressif']],
+      'Piano':[['Grand Piano 1','piano à queue polyvalent'],['Grand Piano 2','piano à queue pour le jazz et le classique'],['Mono Grand','piano à queue en mono'],['Upright','piano droit, son intime'],['Piano/Strings','piano accompagné de cordes'],['Piano/Pad','piano et nappe de synthé chaude']],
+      'Organ':[['Click Tonewheel','grand orgue à roues phoniques'],['Jazz Tonewheel','orgue réglé pour le jazz'],['Full Tonewheel','orgue tous registres ouverts, puissant'],['Console Organ','orgue à lampes américain, très rock'],['Italian Combo','orgue italien des années 60'],['Vox Combo','orgue VOX Continental des années 60']],
+      'Other':[['Full Strings','orchestre à cordes chaleureux'],['Tape Strings','cordes « sur bande », son rétro'],['70s Strings','cordes de synthé des années 70'],['Choir','chœur hommes et femmes'],['Synth Brass','cuivres de synthé chaleureux'],['Sharp Brass','cuivres de synthé brillants']]
+    };
+    var TOUCH = {1:'Normal',2:'Soft 1',3:'Soft 2',4:'Medium 1',5:'Medium 2',6:'Hard 1',7:'Hard 2',8:'Fixed'};
+    var TOUCH_TXT = {1:'comme un piano classique',2:'doux : on joue fort sans forcer',3:'très doux',4:'intermédiaire',5:'intermédiaire',6:'il faut appuyer fort',7:'il faut appuyer très fort',8:'même volume pour toutes les notes, comme un vrai orgue'};
+
+    var TASKS = [
+      {id:'son', ico:'🎚️', label:'Configurer un son', sub:'Instrument + ambiance (doux, punchy, chaleureux…)'},
+      {id:'effet', ico:'✨', label:'Créer un effet', sub:'Instrument + effet (écho, tourbillon, saturation…)'}
+    ];
+    var INSTS = [
+      {id:'piano', ico:'🎹', label:'Piano', sub:'Piano à queue, piano droit', base:['Piano',1]},
+      {id:'epiano', ico:'🌙', label:'Piano électrique', sub:'Le son soul et pop des années 70', base:['E.Piano 1',1]},
+      {id:'orgue', ico:'⛪', label:'Orgue', sub:'Rock, jazz, gospel', base:['Organ',1]},
+      {id:'clav', ico:'🕺', label:'Clavinet', sub:'Funky et percussif', base:['Clav',1]},
+      {id:'cordes', ico:'🎻', label:'Cordes et chœurs', sub:'Nappes, orchestre, voix', base:['Other',1]},
+      {id:'cuivres', ico:'🎺', label:'Cuivres', sub:'Cuivres de synthé', base:['Other',5]}
+    ];
+    var AMBS = [
+      {id:'doux', ico:'🪶', label:'Doux', sub:'Feutré, tout en douceur'},
+      {id:'punchy', ico:'⚡', label:'Punchy', sub:'Qui claque et passe devant'},
+      {id:'chaleureux', ico:'🔥', label:'Chaleureux', sub:'Rond et enveloppant'},
+      {id:'brillant', ico:'💎', label:'Brillant', sub:'Clair, qui scintille'},
+      {id:'vintage', ico:'📻', label:'Vintage', sub:'Le grain des vieux disques'},
+      {id:'ample', ico:'🏛️', label:'Ample', sub:'Comme dans une grande salle'}
+    ];
+    var EFFS = [
+      {id:'espace', ico:'🏛️', label:'Espace', sub:'Réverbération : salle, église'},
+      {id:'echo', ico:'🔁', label:'Écho', sub:'Les notes se répètent'},
+      {id:'tourbillon', ico:'🌀', label:'Tourbillon', sub:'Phaser, haut-parleur tournant'},
+      {id:'ondulation', ico:'🌊', label:'Ondulation', sub:'Le son vibre et respire'},
+      {id:'saturation', ico:'🔥', label:'Saturation', sub:'Du grain, un son « sale »'},
+      {id:'wah', ico:'🦆', label:'Wah-wah', sub:'L\'effet « ouah-ouah » funky'}
+    ];
+
+    // Valeurs des boutons : 0 (minimum, 7 h) à 10 (maximum, 5 h). 5 = milieu (midi).
+    var AMB_CFG = {
+      doux:      {eq:[5.5,4.5,3.5], prefx:null, amp:null, mod:{type:'Chorus 1',speed:3,int:3}, rev:{type:'Hall',depth:4}, touch:2,
+                  why:'Aigus réduits, réverbération Hall légère.'},
+      punchy:    {eq:[6,6.5,6], prefx:{type:'Compressor',int:6}, amp:{drive:4}, mod:null, rev:{type:'Room',depth:2}, touch:1,
+                  why:'Médiums et aigus relevés, réverbération courte : le son reste devant dans le mix.'},
+      chaleureux:{eq:[6.5,5.5,4], prefx:null, amp:{drive:3}, mod:{type:'Chorus 1',speed:2,int:3}, rev:{type:'Room',depth:3}, touch:1,
+                  why:'Graves relevés, aigus réduits.'},
+      brillant:  {eq:[4.5,5,7], prefx:{type:'Compressor',int:3}, amp:null, mod:{type:'Chorus 2',speed:4,int:3}, rev:{type:'Plate',depth:4}, touch:1,
+                  why:'Aigus relevés, graves réduits, réverbération Plate.'},
+      vintage:   {eq:[5,6,4], prefx:null, amp:{drive:5}, mod:{type:'Phaser 1',speed:3,int:4}, rev:{type:'Spring',depth:4}, touch:1,
+                  why:'Médiums relevés, aigus réduits, son à caractère rétro.'},
+      ample:     {eq:[5.5,5,5.5], prefx:null, amp:null, mod:{type:'Chorus 1',speed:2,int:3}, rev:{type:'Hall',depth:7}, touch:1,
+                  why:'Réverbération Hall prononcée (grande salle).'}
+    };
+    // Son choisi selon l'instrument et l'ambiance
+    var AMB_SOUND = {
+      piano:  {doux:['Piano',2], punchy:['Piano',1], chaleureux:['Piano',6], brillant:['Piano',1], vintage:['Piano',4], ample:['Piano',5]},
+      epiano: {doux:['E.Piano 1',1], punchy:['E.Piano 1',4], chaleureux:['E.Piano 1',1], brillant:['E.Piano 1',5], vintage:['E.Piano 2',1], ample:['E.Piano 1',3]},
+      orgue:  {doux:['Organ',2], punchy:['Organ',4], chaleureux:['Organ',1], brillant:['Organ',6], vintage:['Organ',5], ample:['Organ',3]},
+      clav:   {doux:['Clav',5], punchy:['Clav',2], chaleureux:['Clav',4], brillant:['Clav',1], vintage:['Clav',6], ample:['Clav',3]},
+      cordes: {doux:['Other',1], punchy:['Other',3], chaleureux:['Other',1], brillant:['Other',3], vintage:['Other',2], ample:['Other',4]},
+      cuivres:{doux:['Other',5], punchy:['Other',6], chaleureux:['Other',5], brillant:['Other',6], vintage:['Other',5], ample:['Other',5]}
+    };
+    // Règles propres à chaque instrument (s'appliquent toujours)
+    var INST_RULES = {
+      piano:  {amp:null, mod:null, tips:['Piano acoustique : ampli et modulation éteints.']},
+      orgue:  {touch:8, mod:{type:'Rotary',rotary:'SLOW'}, prefx:null, amp:{drive:3},
+               tips:['SLOW/FAST (section MODULATION) : passe la rotation en lent ou rapide pendant le morceau.',
+                     'Une pédale interrupteur en PEDAL 1 fait la même chose au pied.']},
+      epiano: {tips:[]},
+      clav:   {tips:['Clavinet : le son dépend fortement de la force de frappe.']},
+      cordes: {amp:null, prefx:null, tips:[]},
+      cuivres:{amp:null, tips:[]}
+    };
+    // Ajustements fins instrument × ambiance
+    var AMB_OVER = {
+      orgue:  {doux:{amp:{drive:1}, rev:{type:'Hall',depth:3}},
+               punchy:{amp:{drive:6}, mod:{type:'Rotary',rotary:'FAST'}},
+               chaleureux:{amp:{drive:3}},
+               brillant:{amp:{drive:2}, mod:null, tips:['Vox Combo : pas de Rotary, modulation éteinte.']},
+               vintage:{amp:{drive:3}, mod:null, prefx:{type:'Vibrato',speed:5,int:3}, tips:['Italian Combo : vibrato via PRE FX, Rotary éteint.']},
+               ample:{amp:{drive:2}, rev:{type:'Hall',depth:6}}},
+      epiano: {doux:{amp:{drive:2}}, punchy:{amp:{drive:5}}},
+      clav:   {doux:{amp:null}, punchy:{amp:{drive:5}, prefx:{type:'Compressor',int:7}}, ample:{rev:{type:'Hall',depth:5}}},
+      cordes: {doux:{touch:2}, punchy:{rev:{type:'Plate',depth:3}}, vintage:{rev:{type:'Plate',depth:5}}, ample:{rev:{type:'Hall',depth:8}}},
+      cuivres:{punchy:{prefx:{type:'Compressor',int:6}, rev:{type:'Room',depth:3}}, vintage:{amp:{drive:3}}},
+      piano:  {punchy:{prefx:{type:'Compressor',int:4}}, brillant:{prefx:null}, vintage:{rev:{type:'Room',depth:3}}}
+    };
+    var VIBEY = {orgue:1, epiano:1, clav:1};
+    // Effets : function(instId) -> modifications
+    var EFF_CFG = {
+      espace: function(i){ return {rev:{type:'Hall',depth:6},
+        why:'Réverbération Hall (grande salle).',
+        tips:['Plus d\'espace : DEPTH vers 4 h. Petite pièce : TYPE Room.','Notes qui se mélangent : baisser DEPTH.']}; },
+      echo: function(i){ return VIBEY[i]
+        ? {rev:{type:'Tape Echo',depth:4}, why:'Écho à bande (Tape Echo) : répétitions de chaque note, son légèrement filtré.',
+           tips:['Écho calé sur le tempo : TYPE St. Delay + taper TAP en rythme.']}
+        : {rev:{type:'St. Delay',depth:4,tap:true}, why:'Écho stéréo (St. Delay) : répétitions gauche/droite.',
+           tips:['Taper 3-4 fois sur TAP au tempo du morceau.']}; },
+      tourbillon: function(i){ return i==='orgue'
+        ? {mod:{type:'Rotary',rotary:'SLOW'}, why:'Rotary : simulation du haut-parleur tournant d\'orgue.',
+           tips:[]}
+        : {mod:{type:'Phaser 1',speed:3,int:6}, why:'Phaser : effet tournant lent.',
+           tips:['Plus rapide : SPEED vers la droite.']}; },
+      ondulation: function(i){
+        if (i==='epiano') return {prefx:{type:'Tremolo',speed:5,int:6}, why:'Tremolo : le volume monte et descend en rythme.', tips:['Caler SPEED sur le tempo du morceau.']};
+        if (i==='orgue') return {prefx:{type:'Vibrato',speed:5,int:4}, mod:null, why:'Vibrato : la hauteur des notes oscille légèrement.', tips:['Rotary éteint pour entendre le vibrato.']};
+        if (i==='clav') return {prefx:{type:'U-Vibe',speed:4,int:6}, why:'U-Vibe : ondulation du son.', tips:['Plus lent : SPEED vers la gauche.']};
+        return {mod:{type:'Chorus 2',speed:3,int:6}, why:'Chorus : épaissit le son (effet de plusieurs instruments).', tips:['Plus marqué : INTENSITY vers la droite.']};
+      },
+      saturation: function(i){
+        var soft = (i==='piano'||i==='cordes'||i==='cuivres');
+        var p = {amp:{drive: soft?5:7}, why:'DRIVE élevé sur la simulation d\'ampli : son saturé.',
+          tips:['⚠️ Baisser MASTER VOLUME avant : la saturation augmente le volume.','Trop saturé : DRIVE vers la gauche.']};
+        if (!soft) p.prefx = {type:'Booster',int:3};
+        if (i==='orgue') p.mod = {type:'Rotary',rotary:'FAST'};
+        return p; },
+      wah: function(i){
+        var p = {prefx:{type:'Vox Wah',auto:true}, why:'Vox Wah en mode auto : l\'effet suit la force de frappe.',
+          tips:['Wah au pied : pédale d\'expression en PEDAL 2 + lumière AUTO/PEDAL allumée.']};
+        if (i==='clav'||i==='epiano') p.amp = {drive:3};
+        else p.tips = p.tips.concat(['Effet surtout utilisé sur clavinet et piano électrique.']);
+        return p; }
+    };
+
+    function apply(cfg, patch){
+      if (!patch) return;
+      for (var k in patch){
+        if (k==='tips') cfg.tips = cfg.tips.concat(patch.tips);
+        else cfg[k] = patch[k];
+      }
+    }
+    function build(task, inst, choice){
+      var cfg, ruleTips = (INST_RULES[inst].tips||[]);
+      var rules = {}; for (var k in INST_RULES[inst]) if (k!=='tips') rules[k] = INST_RULES[inst][k];
+      if (task==='son'){
+        var a = AMB_CFG[choice];
+        cfg = {eq:a.eq, prefx:a.prefx, amp:a.amp, mod:a.mod, rev:a.rev, touch:a.touch, why:a.why, tips:[], sound:AMB_SOUND[inst][choice]};
+        apply(cfg, rules);
+        apply(cfg, (AMB_OVER[inst]||{})[choice]);
+      } else {
+        cfg = {eq:[5,5,5], prefx:null, amp:null, mod:null, rev:{type:'Room',depth:2}, touch:1, why:'', tips:[], sound:find(INSTS,inst).base};
+        apply(cfg, rules);
+        apply(cfg, EFF_CFG[choice](inst));
+      }
+      cfg.tips = cfg.tips.concat(ruleTips);
+      return cfg;
+    }
+
+    // ---- Rendu ----
+    function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+    function find(list, id){ for (var i=0;i<list.length;i++) if (list[i].id===id) return list[i]; return null; }
+    function clock(v){
+      if (v<=0) return 'au minimum';
+      if (v>=10) return 'au maximum';
+      var h = 7 + v, H = Math.floor(h), half = (h % 1) !== 0;
+      if (H===12) return half ? 'midi et demi' : 'midi (milieu)';
+      var n = H>12 ? H-12 : H;
+      return 'vers ' + n + ' h' + (half ? ' 30' : '');
+    }
+    function eqWord(v){
+      var d = v-5;
+      if (d===0) return 'neutre';
+      var amt = Math.abs(d)<=0.5 ? 'un soupçon' : Math.abs(d)<=1 ? 'un peu' : 'nettement';
+      return amt + (d>0 ? ' plus' : ' moins');
+    }
+    function knob(name, v, centered, sub){
+      var cx=29, cy=29, out='';
+      for (var i=0;i<=10;i++){
+        var ang = (-135 + i*27) * Math.PI/180;
+        var x = cx + 25*Math.sin(ang), y = cy - 25*Math.cos(ang);
+        var lit = centered ? ((v>=5 && i>=5 && i<=Math.round(v)) || (v<5 && i<=5 && i>=Math.round(v))) : (i<=Math.round(v) && v>0);
+        out += '<circle class="k-led'+(lit?' lit':'')+'" cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="2.6"/>';
+      }
+      var a = (-135 + v*27) * Math.PI/180;
+      var px = cx + 13*Math.sin(a), py = cy - 13*Math.cos(a);
+      out += '<circle class="k-body" cx="29" cy="29" r="17"/>';
+      out += '<line class="k-ptr" x1="29" y1="29" x2="'+px.toFixed(1)+'" y2="'+py.toFixed(1)+'"/>';
+      return '<div class="knob"><svg viewBox="0 0 58 58" role="img" aria-label="'+esc(name+' '+clock(v))+'">'+out+'</svg>'
+        + '<span class="kn">'+esc(name)+'</span><span class="kv">'+esc(clock(v))+(sub?'<br>'+esc(sub):'')+'</span></div>';
+    }
+    function section(title, on, body){
+      return '<div class="fxc'+(on?'':' off')+'"><div class="fxh"><b>'+title+'</b><span class="lamp'+(on?' on':'')+'">'+(on?'ON':'OFF')+'</span></div>'+body+'</div>';
+    }
+    var RESET = '<p class="fxt">SPEED : appuyez sur le bouton pour le laisser au réglage d\'origine.</p>';
+    function renderResult(task, inst, choice){
+      var c = build(task, inst, choice);
+      var I = find(INSTS, inst), C = find(task==='son'?AMBS:EFFS, choice);
+      var s = SOUNDS[c.sound[0]][c.sound[1]-1];
+      var h = '';
+      h += '<div class="res-title">'+I.ico+' '+esc(I.label)+' · '+esc(C.label)+'</div>';
+      h += '<p class="res-why">'+esc(c.why)+'</p>';
+
+      h += '<div class="res-step"><i>1</i>Choisissez le son (section SOUND)</div>';
+      h += '<div class="soundbox"><div>TYPE <span class="big"><em>'+esc(c.sound[0])+'</em></span></div>'
+         + '<div>VARIATION <span class="big"><em>'+c.sound[1]+'</em></span></div>'
+         + '<div><strong>'+esc(s[0])+'</strong> — '+esc(s[1])+'</div></div>';
+      h += '<p class="fxt" style="margin-top:.5rem">À faire <strong>en premier</strong> : changer de son réinitialise les effets.</p>';
+
+      h += '<div class="res-step"><i>2</i>Effets (de gauche à droite sur la façade)</div><div class="fx">';
+      h += section('EQUALIZER', true, '<div class="knobs">'+knob('BASS',c.eq[0],true,eqWord(c.eq[0])+' de graves')+knob('MID',c.eq[1],true,eqWord(c.eq[1])+' de médiums')+knob('TREBLE',c.eq[2],true,eqWord(c.eq[2])+' d\'aigus')+'</div>');
+      if (c.prefx){
+        var pb = '<p class="fxt">TYPE : <span class="btn">'+esc(c.prefx.type)+'</span></p>';
+        if (c.prefx.auto) pb += '<p class="fxt">Lumière <span class="btn">AUTO/PEDAL</span> <strong>éteinte</strong> (mode automatique).</p>';
+        else {
+          if (c.prefx.speed==null) pb += RESET;
+          pb += '<div class="knobs">'+(c.prefx.speed!=null?knob('SPEED',c.prefx.speed):'')+knob('INTENSITY',c.prefx.int)+'</div>';
+        }
+        h += section('PRE FX', true, pb);
+      } else h += section('PRE FX', false, '<p class="fxt">Lumière ON/OFF éteinte.</p>');
+      if (c.amp) h += section('AMP MODEL', true, '<p class="fxt">TYPE : gardez celui proposé par le son.</p><div class="knobs">'+knob('DRIVE',c.amp.drive,false,c.amp.drive<=2?'son propre':c.amp.drive<=5?'un peu de grain':'saturé')+'</div>');
+      else h += section('AMP MODEL', false, '<p class="fxt">Lumière ON/OFF éteinte.</p>');
+      if (c.mod){
+        var mb = '<p class="fxt">TYPE : <span class="btn">'+esc(c.mod.type)+'</span></p>';
+        if (c.mod.rotary) mb += '<p class="fxt">Bouton <span class="btn">SLOW/FAST</span> : <strong>'+(c.mod.rotary==='FAST'?'FAST (rapide), lumière allumée':'SLOW (lent), lumière éteinte')+'</strong></p>';
+        else mb += '<div class="knobs">'+knob('SPEED',c.mod.speed,false,c.mod.speed<=3?'lent':'moyen')+knob('INTENSITY',c.mod.int,false,c.mod.int<=3?'léger':'marqué')+'</div>';
+        h += section('MODULATION FX', true, mb);
+      } else h += section('MODULATION FX', false, '<p class="fxt">Lumière ON/OFF éteinte.</p>');
+      if (c.rev){
+        var rb = '<p class="fxt">TYPE : <span class="btn">'+esc(c.rev.type)+'</span></p><div class="knobs">'+knob('DEPTH',c.rev.depth,false,c.rev.depth<=3?'discret':c.rev.depth<=5?'modéré':'généreux')+'</div>';
+        if (c.rev.tap) rb += '<p class="fxt">Puis tapez sur <span class="btn">TAP</span> au rythme du morceau.</p>';
+        h += section('REVERB / DELAY', true, rb);
+      } else h += section('REVERB / DELAY', false, '<p class="fxt">Éteint.</p>');
+      h += '</div>';
+
+      h += '<div class="res-step"><i>3</i>Toucher</div>';
+      h += '<p class="fxt">Appuyez sur <span class="btn">TOUCH</span>, puis sur le bouton <span class="btn">FAVORITES '+c.touch+'</span> (<strong>'+TOUCH[c.touch]+'</strong> : '+TOUCH_TXT[c.touch]+'), puis de nouveau sur <span class="btn">TOUCH</span>.</p>';
+
+      h += '<div class="res-step"><i>4</i>Notes et enregistrement</div>';
+      h += '<ul class="res-tips">';
+      for (var i=0;i<c.tips.length;i++) h += '<li>'+esc(c.tips[i])+'</li>';
+      h += '<li>Enregistrer : <strong>maintenir</strong> un bouton <span class="btn">FAVORITES</span>, rappuyer quand il clignote (<a href="#favoris">détails</a>).</li>';
+      h += '</ul>';
+      h += '<p class="fxt" style="margin-top:1rem;color:var(--muted)">Positions en heures d\'horloge (midi = milieu). Valeurs indicatives, à ajuster à l\'oreille. Appui sur un bouton = valeur d\'origine.</p>';
+      return h;
+    }
+
+    var prog = document.getElementById('wizProg'), body = document.getElementById('wizBody');
+    if (!prog || !body) return;
+    var st = {task:null, inst:null, choice:null};
+
+    function tiles(list, kind, two){
+      var h = '<div class="tiles'+(two?' two':'')+'">';
+      for (var i=0;i<list.length;i++){
+        var o = list[i];
+        h += '<button type="button" class="tile" data-k="'+kind+'" data-v="'+o.id+'"><span class="ico" aria-hidden="true">'+o.ico+'</span><b>'+esc(o.label)+'</b><small>'+esc(o.sub)+'</small></button>';
+      }
+      return h + '</div>';
+    }
+    function chips(){
+      var h = '<div class="wiz-picked">';
+      if (st.task) h += '<span class="chip">'+esc(find(TASKS,st.task).label)+'</span>';
+      if (st.inst) h += '<span class="chip">'+esc(find(INSTS,st.inst).label)+'</span>';
+      return h + '</div>';
+    }
+    function nav(back, extra){
+      return '<div class="wiz-nav">'+(back?'<button type="button" class="wbtn" data-act="back">← Retour</button>':'')+(extra||'')+'</div>';
+    }
+    function render(focus){
+      var step = !st.task ? 0 : !st.inst ? 1 : !st.choice ? 2 : 3;
+      var labels = ['Tâche','Instrument', st.task==='effet' ? 'Effet' : 'Ambiance', 'Réglage'];
+      prog.innerHTML = labels.map(function(l,i){ return '<li class="'+(i<step?'done':i===step?'now':'')+'"'+(i===step?' aria-current="step"':'')+'>'+(i+1)+'. '+l+'</li>'; }).join('');
+      var h = '';
+      if (step===0) h = '<p class="wiz-q">Que voulez-vous faire ?</p>' + tiles(TASKS,'task',true);
+      else if (step===1) h = chips() + '<p class="wiz-q">Quel instrument ?</p>' + tiles(INSTS,'inst') + nav(true);
+      else if (step===2) h = chips() + '<p class="wiz-q">'+(st.task==='effet'?'Quel effet ?':'Quelle ambiance ?')+'</p>' + tiles(st.task==='effet'?EFFS:AMBS,'choice') + nav(true);
+      else h = renderResult(st.task, st.inst, st.choice) + nav(true, '<button type="button" class="wbtn primary" data-act="restart">↺ Nouveau réglage</button><button type="button" class="wbtn" data-act="copy">🔗 Copier le lien</button><span class="copied" id="wizCopied" hidden>Lien copié !</span>');
+      body.innerHTML = h;
+      var hash = step===3 ? '#assistant/'+st.task+'/'+st.inst+'/'+st.choice : (step>0 ? '#assistant' : null);
+      if (hash && history.replaceState) { try { history.replaceState(null,'',hash); } catch(e){} }
+      if (focus){
+        var t = body.querySelector('.res-title, .wiz-q');
+        if (t){ t.setAttribute('tabindex','-1'); t.focus({preventScroll:true}); }
+        var top = document.getElementById('assistant').getBoundingClientRect().top;
+        if (top < 0) document.getElementById('assistant').scrollIntoView({behavior:'smooth'});
+      }
+    }
+    body.addEventListener('click', function(e){
+      var b = e.target.closest('button'); if (!b) return;
+      var k = b.getAttribute('data-k'), act = b.getAttribute('data-act');
+      if (k){ st[k] = b.getAttribute('data-v'); }
+      else if (act==='back'){ if (st.choice) st.choice=null; else if (st.inst) st.inst=null; else st.task=null; }
+      else if (act==='restart'){ st = {task:null, inst:null, choice:null}; }
+      else if (act==='copy'){
+        var url = location.href, done = function(){ var m=document.getElementById('wizCopied'); if(m){ m.hidden=false; setTimeout(function(){ m.hidden=true; },2000);} };
+        if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, function(){ prompt('Copiez ce lien :', url); });
+        else prompt('Copiez ce lien :', url);
+        return;
+      }
+      render(true);
+    });
+    // Ouvrir directement un réglage partagé : #assistant/son/orgue/doux
+    var m = location.hash.match(/^#assistant\/(son|effet)\/(\w+)\/(\w+)$/);
+    if (m && find(INSTS,m[2]) && find(m[1]==='son'?AMBS:EFFS, m[3])){
+      st = {task:m[1], inst:m[2], choice:m[3]};
+      render(false);
+      setTimeout(function(){ document.getElementById('assistant').scrollIntoView(); }, 0);
+    } else render(false);
   })();
 </script>
 </body>
